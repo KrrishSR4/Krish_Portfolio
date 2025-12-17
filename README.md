@@ -1,73 +1,121 @@
-# Welcome to your Lovable project
+# Krish Mishra — Personal Portfolio
 
-## Project info
+A modern, responsive, and high-performance personal portfolio website built to showcase my skills, projects, and professional journey as a Full Stack Web Developer.
 
-**URL**: https://lovable.dev/projects/5485a54e-b449-4b44-926b-df836f358d83
+This portfolio reflects my focus on clean UI design, scalable frontend architecture, and modern web development practices.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## About Me
 
-**Use Lovable**
+I am **Krish Mishra**, a B.Tech Information Technology student and a passionate Full Stack Web Developer. I have experience in building responsive web applications using modern frontend technologies and a growing interest in DevOps and Cloud Computing.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/5485a54e-b449-4b44-926b-df836f358d83) and start prompting.
+I enjoy learning new technologies, solving real-world problems through code, and continuously improving my development skills.
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+**Frontend**
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+* React (Vite)
+* TypeScript
+* Tailwind CSS
 
-Follow these steps:
+**Tools & Build**
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+* Git & GitHub
+* ESLint
+* PostCSS
+* Vite
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## Key Features
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+* Clean and modern user interface
+* Fully responsive across all devices
+* Fast performance with Vite bundling
+* Component-based and scalable architecture
+* Easy to maintain and extend
+* Deployment-ready for Vercel and Netlify
+
+---
+
+## Project Structure
+
+```
+Krish_Portfolio
+├── public/
+│   └── assets/
+│
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── assets/
+│   ├── App.tsx
+│   └── main.tsx
+│
+├── index.html
+├── package.json
+├── tsconfig.json
+├── tailwind.config.ts
+├── postcss.config.js
+├── vite.config.ts
+└── README.md
+```
+
+---
+
+## Setup & Run Locally
+
+Clone the repository:
+
+```bash
+git clone https://github.com/KrrishSR4/Krish_Portfolio.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd Krish_Portfolio
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Deployment
 
-**Use GitHub Codespaces**
+This portfolio is optimized for modern deployment platforms.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+**Recommended Platform**
 
-## What technologies are used for this project?
+* Vercel
 
-This project is built with:
+**Build Command**
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```bash
+npm run build
+```
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/5485a54e-b449-4b44-926b-df836f358d83) and click on Share -> Publish.
+## Contact
 
-## Can I connect a custom domain to my Lovable project?
+* **Email**: [krishmishra9801@gmail.com](mailto:krishmishra9801@gmail.com)
+* **GitHub**: [https://github.com/KrrishSR4](https://github.com/KrrishSR4)
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Thank you for visiting this repository. If you find this project useful or inspiring, feel free to star it.
