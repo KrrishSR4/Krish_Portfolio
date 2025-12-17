@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 180 100% 97%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    --primary: 164 76% 46%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 188 94% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 330 81% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 164 76% 46%;
+
+    --radius: 1rem;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(164 76% 46%), hsl(188 94% 40%));
+    --gradient-accent: linear-gradient(135deg, hsl(330 81% 60%), hsl(188 94% 40%));
+    --gradient-bg: linear-gradient(to bottom right, hsl(180 100% 97%), hsl(330 100% 96%), hsl(164 100% 96%));
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --shadow-soft: 200 65% 72% / 0.22;
+    --shadow-medium: 200 70% 58% / 0.32;
+    --shadow-strong: 200 72% 46% / 0.36;
+    --glow-primary: 164 76% 68% / 0.75;
+    --glow-accent: 330 81% 70% / 0.65;
+  }
+
+  .dark {
+    --background: 215 25% 10%;
+    --foreground: 0 0% 98%;
+
+    --card: 215 25% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 215 25% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 164 76% 46%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 215 25% 18%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 215 25% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 330 81% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 215 25% 18%;
+    --input: 215 25% 18%;
+    --ring: 164 76% 46%;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(164 76% 46%), hsl(188 94% 40%));
+    --gradient-accent: linear-gradient(135deg, hsl(330 81% 60%), hsl(188 94% 40%));
+    --gradient-bg: linear-gradient(to bottom right, hsl(215 25% 10%), hsl(330 40% 15%), hsl(164 40% 15%));
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --shadow-soft: 220 35% 8% / 0.5;
+    --shadow-medium: 220 40% 6% / 0.6;
+    --shadow-strong: 220 45% 4% / 0.7;
+    --glow-primary: 164 76% 52% / 0.55;
+    --glow-accent: 330 81% 60% / 0.5;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    cursor: none; /* Hide default cursor */
+  }
+
+  /* Hide cursor on all elements */
+  * {
+    cursor: none !important;
+  }
+
+  /* Show pointer cursor on interactive elements for accessibility */
+  a,
+  button,
+  [role="button"],
+  input[type="submit"],
+  input[type="button"],
+  [onclick] {
+    cursor: none !important;
+  }
+}
