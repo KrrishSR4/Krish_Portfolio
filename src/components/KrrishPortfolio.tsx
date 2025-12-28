@@ -768,7 +768,7 @@ export default function KrrishPortfolio() {
           Built with <span className="text-red-500">❤️</span> using React, Tailwind CSS, and GSAP
         </p>
         <p className="text-xs text-slate-500">
-          &copy; {new Date().getFullYear()} All rights reserved — Let's build something amazing together!
+          &copy; {new Date().getFullYear()} NO rights reserved — Let's build something amazing together!
         </p>
       </footer>
       <ScrollToTopButton />
