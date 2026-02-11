@@ -85,7 +85,6 @@ export default function SkillSphere({ skills, shadowPalette }: SkillSphereProps)
 
         const nodes = container.querySelectorAll<HTMLDivElement>('.sn');
         const cards = container.querySelectorAll<HTMLDivElement>('.sc');
-        const labels = container.querySelectorAll<HTMLSpanElement>('.sl');
         const n = nodes.length;
 
         let rafId = 0;
@@ -116,12 +115,13 @@ export default function SkillSphere({ skills, shadowPalette }: SkillSphereProps)
         const loop = () => {
             if (!isDragging.current) {
                 rotate(vy.current, vx.current);
-                // Friction: decay velocity
-                vx.current *= 0.96;
-                vy.current *= 0.96;
-                // Minimum idle spin
-                if (Math.abs(vx.current) < 0.0005) vx.current = 0.0005;
-                if (Math.abs(vy.current) < 0.0003) vy.current = 0.0003;
+                // Highe friction: stop faster when released (feels more controlled)
+                vx.current *= 0.95;
+                vy.current *= 0.95;
+
+                // Stop completely below threshold (no auto-spin)
+                if (Math.abs(vx.current) < 0.0001) vx.current = 0;
+                if (Math.abs(vy.current) < 0.0001) vy.current = 0;
             }
             render();
             rafId = requestAnimationFrame(loop);
@@ -132,20 +132,17 @@ export default function SkillSphere({ skills, shadowPalette }: SkillSphereProps)
         const setNodeHover = (idx: number, isHover: boolean) => {
             if (idx < 0 || idx >= n) return;
             const card = cards[idx];
-            const label = labels[idx];
             const rgb = rgbStrings.current[idx];
             if (isHover) {
                 card.style.background = `rgba(${rgb}, 0.1)`;
                 card.style.borderColor = `rgba(${rgb}, 0.6)`;
                 card.style.boxShadow = `0 10px 30px rgba(${rgb}, 0.3)`;
                 card.style.transform = 'scale(1.15)';
-                label.style.color = `rgb(${rgb})`;
             } else {
                 card.style.background = 'rgba(255, 255, 255, 0.8)';
                 card.style.borderColor = 'rgba(0, 0, 0, 0.05)';
                 card.style.boxShadow = 'none';
                 card.style.transform = 'scale(1)';
-                label.style.color = '#1e293b';
             }
         };
 
@@ -198,10 +195,11 @@ export default function SkillSphere({ skills, shadowPalette }: SkillSphereProps)
             if (isDragging.current) {
                 const dx = e.movementX || 0;
                 const dy = e.movementY || 0;
-                rotate(dy * -0.004, dx * 0.004);
-                // Exponential moving average for smooth momentum
-                vx.current = vx.current * 0.2 + (dx * 0.002) * 0.8;
-                vy.current = vy.current * 0.2 + (dy * -0.002) * 0.8;
+                // Higher sensitivity (0.007) for 1:1 feel
+                rotate(dy * -0.007, dx * 0.007);
+                // Direct momentum mapping
+                vx.current = dx * 0.003;
+                vy.current = dy * -0.003;
                 return;
             }
             // Hover detection
@@ -251,19 +249,16 @@ export default function SkillSphere({ skills, shadowPalette }: SkillSphereProps)
                 {skills.map((skill) => (
                     <div key={skill.slug} className="sn absolute top-0 left-0 will-change-transform pointer-events-none origin-center">
                         <div
-                            className="sc flex items-center gap-3 px-4 py-2.5 rounded-xl border border-black/5 bg-white/80 shadow-sm transition-all duration-200 ease-out"
+                            className="sc flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full border border-black/5 bg-white/80 shadow-sm transition-all duration-200 ease-out"
                         >
                             <img
                                 src={`${SIMPLE_ICONS_PRIMARY}/${skill.slug}`}
                                 alt={skill.name}
-                                className="w-7 h-7 md:w-9 md:h-9 object-contain"
+                                className="w-6 h-6 md:w-8 md:h-8 object-contain"
                                 onError={(e) => { (e.target as HTMLImageElement).style.visibility = 'hidden'; }}
                                 loading="lazy"
                                 draggable={false}
                             />
-                            <span className="sl text-xs font-bold text-slate-800 whitespace-nowrap">
-                                {skill.name}
-                            </span>
                         </div>
                     </div>
                 ))}
