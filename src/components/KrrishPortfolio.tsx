@@ -3,13 +3,15 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import heroImage from "@/assets/Hero-Krish.png";
 import { ScrollToTopButton } from "./ui/scroll-to-top";
+import SkillSphere from "./SkillSphere";
 
 gsap.registerPlugin(ScrollTrigger);
 
 // Helper to safely request DeviceOrientation permission on iOS (and fall back on non-iOS)
 const requestDeviceOrientationPermission = async (): Promise<boolean> => {
   if (typeof window === "undefined") return false;
-  const Dev = (window as any).DeviceOrientationEvent ?? undefined;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const Dev = (window as unknown as Record<string, unknown>).DeviceOrientationEvent as { requestPermission?: () => Promise<string> } | undefined;
   if (Dev && typeof Dev.requestPermission === "function") {
     try {
       const permission = await Dev.requestPermission();
@@ -22,6 +24,13 @@ const requestDeviceOrientationPermission = async (): Promise<boolean> => {
   // No permission API => assume allowed on non-iOS browsers
   return true;
 };
+
+const TYPING_LINES = [
+  "Engineering student 23-27",
+  "Web Developer",
+  "Exploring DSA and Open-Source",
+  "DevOps and Cloud Computing aspirant",
+];
 
 export default function KrrishPortfolio() {
   const skillsRef = useRef<HTMLDivElement>(null);
@@ -47,13 +56,8 @@ export default function KrrishPortfolio() {
     img.style.display = "none";
   };
 
-  // Typing lines
-  const lines = [
-    "Engineering student 23-27",
-    "Web Developer",
-    "Exploring DSA and Open-Source",
-    "DevOps and Cloud Computing aspirant",
-  ];
+  // Typing lines (defined outside component for stable reference)
+  const lines = TYPING_LINES;
 
   // Typing effect (stable)
   useEffect(() => {
@@ -93,7 +97,7 @@ export default function KrrishPortfolio() {
       mounted = false;
       if (timer !== null) window.clearTimeout(timer);
     };
-  }, []);
+  }, [lines]);
 
   // Smooth scroll spy to highlight navbar
   useEffect(() => {
@@ -255,7 +259,6 @@ export default function KrrishPortfolio() {
       hero.removeEventListener("mouseleave", onLeave);
       window.removeEventListener("deviceorientation", onOrientationChange);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Project card hover parallax using refs
@@ -350,6 +353,8 @@ export default function KrrishPortfolio() {
     ansible: { base: "rgba(220, 38, 38, 0.32)", hover: "rgba(220, 38, 38, 0.6)" },
     amazonaws: { base: "rgba(249, 115, 22, 0.3)", hover: "rgba(249, 115, 22, 0.6)" },
     googlecloud: { base: "rgba(59, 130, 246, 0.3)", hover: "rgba(59, 130, 246, 0.58)" },
+    linux: { base: "rgba(252, 198, 36, 0.3)", hover: "rgba(252, 198, 36, 0.6)" },
+    gnubash: { base: "rgba(78, 170, 37, 0.3)", hover: "rgba(78, 170, 37, 0.6)" },
   };
 
   const skills = [
@@ -372,6 +377,8 @@ export default function KrrishPortfolio() {
     { name: "Ansible", slug: "ansible", color: "text-red-600" },
     { name: "AWS", slug: "amazonaws", color: "text-orange-500" },
     { name: "GCP", slug: "googlecloud", color: "text-blue-500" },
+    { name: "Linux", slug: "linux", color: "text-yellow-600" },
+    { name: "Shell Script", slug: "gnubash", color: "text-green-600" },
   ];
 
   const projects = [
@@ -633,6 +640,11 @@ export default function KrrishPortfolio() {
           <p className="mt-6 text-sm text-slate-600 bg-white/40 backdrop-blur-sm p-4 rounded-xl border border-white/50">
             💡 <span className="font-bold text-cyan-600">Pro Tip:</span> Use your mouse wheel or swipe to scroll through my skills horizontally while this section stays pinned! Each technology represents real-world project experience.
           </p>
+
+          {/* Interactive Skill Sphere */}
+          <div className="mt-12">
+            <SkillSphere skills={skills} shadowPalette={skillShadowPalette} />
+          </div>
         </section>
 
         {/* PROJECTS - 6 dummy with interactive hover */}
