@@ -285,6 +285,7 @@ const TargetCursor = ({
 
     window.addEventListener('mouseover', enterHandler, { passive: true });
 
+    const strengthRef = activeStrengthRef.current;
     return () => {
       if (tickerFnRef.current) {
         gsap.ticker.remove(tickerFnRef.current);
@@ -305,7 +306,7 @@ const TargetCursor = ({
 
       isActiveRef.current = false;
       targetCornerPositionsRef.current = null;
-      activeStrengthRef.current.current = 0;
+      strengthRef.current = 0;
     };
   }, [targetSelector, spinDuration, moveCursor, constants, hideDefaultCursor, isMobile, hoverDuration, parallaxOn]);
 

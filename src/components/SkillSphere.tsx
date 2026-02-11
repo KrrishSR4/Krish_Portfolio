@@ -28,59 +28,55 @@ export default function SkillSphere({ skills, shadowPalette }: SkillSphereProps)
     const containerRef = useRef<HTMLDivElement>(null);
     const tooltipRef = useRef<HTMLDivElement>(null);
 
-    // Store 3D positions as plain arrays (mutable, no React state)
-    const px = useRef<Float64Array>(new Float64Array(0));
-    const py = useRef<Float64Array>(new Float64Array(0));
-    const pz = useRef<Float64Array>(new Float64Array(0));
+    // High-performance 3D positions
+    const px = useRef<Float32Array>(new Float32Array(0));
+    const py = useRef<Float32Array>(new Float32Array(0));
+    const pz = useRef<Float32Array>(new Float32Array(0));
 
     const isDragging = useRef(false);
-    const lastX = useRef(0);
-    const lastY = useRef(0);
-    const vx = useRef(0.004);
-    const vy = useRef(0.002);
+    const vx = useRef(0.001);
+    const vy = useRef(0.0005);
     const hovIdx = useRef(-1);
-
-    // Pre-compute rgb strings per skill
     const rgbStrings = useRef<string[]>([]);
 
     const init = useCallback(() => {
         const n = skills.length;
-        px.current = new Float64Array(n);
-        py.current = new Float64Array(n);
-        pz.current = new Float64Array(n);
+        px.current = new Float32Array(n);
+        py.current = new Float32Array(n);
+        pz.current = new Float32Array(n);
         rgbStrings.current = new Array(n);
 
-        const golden = Math.PI * (3 - Math.sqrt(5));
+        const goldenAngle = Math.PI * (3 - Math.sqrt(5));
         for (let i = 0; i < n; i++) {
             const y = 1 - (i / (n - 1)) * 2;
-            const r = Math.sqrt(1 - y * y);
-            const t = golden * i;
-            px.current[i] = Math.cos(t) * r;
+            const radius = Math.sqrt(1 - y * y);
+            const theta = goldenAngle * i;
+            px.current[i] = Math.cos(theta) * radius;
             py.current[i] = y;
-            pz.current[i] = Math.sin(t) * r;
+            pz.current[i] = Math.sin(theta) * radius;
 
-            const pal = shadowPalette[skills[i].slug];
-            rgbStrings.current[i] = pal ? extractRgb(pal.hover) : "100, 116, 139";
+            const palette = shadowPalette[skills[i].slug];
+            rgbStrings.current[i] = palette ? extractRgb(palette.hover) : "100, 116, 139";
         }
     }, [skills, shadowPalette]);
 
-    // Rotate in-place (no allocation)
     const rotate = useCallback((ax: number, ay: number) => {
         const cx = Math.cos(ax), sx = Math.sin(ax);
         const cy = Math.cos(ay), sy = Math.sin(ay);
         const n = px.current.length;
         for (let i = 0; i < n; i++) {
-            const y1 = py.current[i] * cx - pz.current[i] * sx;
-            const z1 = py.current[i] * sx + pz.current[i] * cx;
-            const x1 = px.current[i] * cy + z1 * sy;
-            const z2 = -px.current[i] * sy + z1 * cy;
+            const y0 = py.current[i], z0 = pz.current[i];
+            const y1 = y0 * cx - z0 * sx;
+            const z1 = y0 * sx + z0 * cx;
+            const x0 = px.current[i];
+            const x1 = x0 * cy + z1 * sy;
+            const z2 = -x0 * sy + z1 * cy;
             px.current[i] = x1;
             py.current[i] = y1;
             pz.current[i] = z2;
         }
     }, []);
 
-    // Render loop + event handlers — all pure DOM, zero setState
     useEffect(() => {
         init();
         const container = containerRef.current;
@@ -92,157 +88,144 @@ export default function SkillSphere({ skills, shadowPalette }: SkillSphereProps)
         const labels = container.querySelectorAll<HTMLSpanElement>('.sl');
         const n = nodes.length;
 
-        // Hide tooltip initially
-        tooltip.style.opacity = '0';
-        tooltip.style.pointerEvents = 'none';
-
-        let raf = 0;
+        let rafId = 0;
 
         const render = () => {
             const w = container.clientWidth;
             const h = container.clientHeight;
-            const cx = w / 2;
-            const cy = h / 2;
-            const rad = Math.min(cx, cy) * 0.72;
+            const centerX = w / 2;
+            const centerY = h / 2;
+            // Slightly larger radius for less crowding
+            const sphereRadius = Math.min(centerX, centerY) * 0.8;
 
             for (let i = 0; i < n; i++) {
-                const ds = (pz.current[i] + 1.5) / 2.5;
-                const op = Math.max(0.15, (pz.current[i] + 1) / 2);
-                const x = cx + px.current[i] * rad;
-                const y = cy + py.current[i] * rad;
-                const s = 0.5 + ds * 0.55;
+                const depth = (pz.current[i] + 1) / 2; // 0 to 1
+                const scale = 0.6 + depth * 0.6;
+                const opacity = 0.2 + depth * 0.8;
+                const x = centerX + px.current[i] * sphereRadius;
+                const y = centerY + py.current[i] * sphereRadius;
+
                 const el = nodes[i];
-                el.style.transform = `translate(-50%,-50%) translate3d(${x}px,${y}px,0) scale(${s})`;
-                el.style.opacity = `${op}`;
-                el.style.zIndex = `${(ds * 100) | 0}`;
+                // Using transform3d for hardware acceleration
+                el.style.transform = `translate3d(${x}px,${y}px,0) translate(-50%, -50%) scale(${scale})`;
+                el.style.opacity = `${opacity}`;
+                el.style.zIndex = `${Math.round(depth * 100)}`;
             }
         };
 
-        const tick = () => {
+        const loop = () => {
             if (!isDragging.current) {
-                rotate(vy.current * 0.4, vx.current * 0.4);
+                rotate(vy.current, vx.current);
+                // Friction: decay velocity
+                vx.current *= 0.96;
+                vy.current *= 0.96;
+                // Minimum idle spin
+                if (Math.abs(vx.current) < 0.0005) vx.current = 0.0005;
+                if (Math.abs(vy.current) < 0.0003) vy.current = 0.0003;
             }
             render();
-            raf = requestAnimationFrame(tick);
+            rafId = requestAnimationFrame(loop);
         };
-        raf = requestAnimationFrame(tick);
+        rafId = requestAnimationFrame(loop);
 
-        // --- Hover: direct DOM style manipulation ---
-        const applyHover = (i: number) => {
-            if (hovIdx.current === i) return;
-            // Clear old
-            if (hovIdx.current >= 0) clearHover(hovIdx.current);
-            hovIdx.current = i;
-            if (i < 0) return;
-            const rgb = rgbStrings.current[i];
-            const card = cards[i];
-            const label = labels[i];
-            card.style.background = `rgba(${rgb},0.15)`;
-            card.style.borderColor = `rgba(${rgb},0.5)`;
-            card.style.boxShadow = `0 12px 40px rgba(${rgb},0.4), 0 0 0 1px rgba(${rgb},0.2)`;
-            card.style.transform = 'scale(1.15)';
-            label.style.color = `rgb(${rgb})`;
-        };
-
-        const clearHover = (i: number) => {
-            if (i < 0 || i >= n) return;
-            const card = cards[i];
-            const label = labels[i];
-            card.style.background = 'rgba(255,255,255,0.7)';
-            card.style.borderColor = 'rgba(255,255,255,0.4)';
-            card.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)';
-            card.style.transform = 'scale(1)';
-            label.style.color = '#334155';
+        // Optimized Hover Logic
+        const setNodeHover = (idx: number, isHover: boolean) => {
+            if (idx < 0 || idx >= n) return;
+            const card = cards[idx];
+            const label = labels[idx];
+            const rgb = rgbStrings.current[idx];
+            if (isHover) {
+                card.style.background = `rgba(${rgb}, 0.1)`;
+                card.style.borderColor = `rgba(${rgb}, 0.6)`;
+                card.style.boxShadow = `0 10px 30px rgba(${rgb}, 0.3)`;
+                card.style.transform = 'scale(1.15)';
+                label.style.color = `rgb(${rgb})`;
+            } else {
+                card.style.background = 'rgba(255, 255, 255, 0.8)';
+                card.style.borderColor = 'rgba(0, 0, 0, 0.05)';
+                card.style.boxShadow = 'none';
+                card.style.transform = 'scale(1)';
+                label.style.color = '#1e293b';
+            }
         };
 
-        const showTooltip = (i: number, mx: number, my: number) => {
-            const rgb = rgbStrings.current[i];
+        const updateTooltip = (idx: number, x: number, y: number) => {
+            if (idx < 0) {
+                tooltip.style.opacity = '0';
+                return;
+            }
+            const rgb = rgbStrings.current[idx];
             const rect = container.getBoundingClientRect();
-            tooltip.style.left = `${mx - rect.left}px`;
-            tooltip.style.top = `${my - rect.top - 52}px`;
+            tooltip.style.left = `${x - rect.left}px`;
+            tooltip.style.top = `${y - rect.top - 50}px`;
             tooltip.style.opacity = '1';
-            const inner = tooltip.firstElementChild as HTMLDivElement;
-            if (inner) {
-                inner.textContent = skills[i].name;
-                inner.style.background = `linear-gradient(135deg, rgb(${rgb}), rgba(${rgb},0.8))`;
-                inner.style.boxShadow = `0 8px 24px rgba(${rgb},0.4)`;
-            }
+            const box = tooltip.querySelector('.tb') as HTMLDivElement;
             const arrow = tooltip.querySelector('.ta') as HTMLDivElement;
-            if (arrow) {
-                arrow.style.background = `rgb(${rgb})`;
+            if (box) {
+                box.textContent = skills[idx].name;
+                box.style.background = `rgb(${rgb})`;
             }
+            if (arrow) arrow.style.borderTopColor = `rgb(${rgb})`;
         };
 
-        const hideTooltip = () => {
-            tooltip.style.opacity = '0';
-        };
-
-        // Hit test: which node is the cursor over?
         const hitTest = (mx: number, my: number): number => {
-            let best = -1;
-            let bestZ = -Infinity;
+            let bIdx = -1, bZ = -Infinity;
             for (let i = 0; i < n; i++) {
-                const rect = nodes[i].getBoundingClientRect();
-                if (mx >= rect.left && mx <= rect.right && my >= rect.top && my <= rect.bottom) {
-                    if (pz.current[i] > bestZ) {
-                        bestZ = pz.current[i];
-                        best = i;
+                const r = nodes[i].getBoundingClientRect();
+                if (mx > r.left && mx < r.right && my > r.top && my < r.bottom) {
+                    if (pz.current[i] > bZ) {
+                        bZ = pz.current[i];
+                        bIdx = i;
                     }
                 }
             }
-            return best;
+            return bIdx;
         };
 
-        const inBounds = (x: number, y: number) => {
-            const r = container.getBoundingClientRect();
-            return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
-        };
-
-        // --- Pointer handlers on window ---
+        // Events
         const onDown = (e: PointerEvent) => {
-            if (!inBounds(e.clientX, e.clientY)) return;
+            const rect = container.getBoundingClientRect();
+            if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) return;
             isDragging.current = true;
-            lastX.current = e.clientX;
-            lastY.current = e.clientY;
-            applyHover(-1);
-            hideTooltip();
+            if (hovIdx.current >= 0) setNodeHover(hovIdx.current, false);
+            hovIdx.current = -1;
+            updateTooltip(-1, 0, 0);
+            // Disable transitions during drag for absolute smoothness
+            cards.forEach(c => c.style.transition = 'none');
         };
 
         const onMove = (e: PointerEvent) => {
             if (isDragging.current) {
-                const dx = e.clientX - lastX.current;
-                const dy = e.clientY - lastY.current;
-                lastX.current = e.clientX;
-                lastY.current = e.clientY;
-                rotate(dy * 0.008, dx * 0.008);
-                vx.current = dx * 0.002 + vx.current * 0.7;
-                vy.current = dy * 0.002 + vy.current * 0.7;
+                const dx = e.movementX || 0;
+                const dy = e.movementY || 0;
+                rotate(dy * -0.004, dx * 0.004);
+                // Exponential moving average for smooth momentum
+                vx.current = vx.current * 0.2 + (dx * 0.002) * 0.8;
+                vy.current = vy.current * 0.2 + (dy * -0.002) * 0.8;
                 return;
             }
-            if (!inBounds(e.clientX, e.clientY)) {
-                applyHover(-1);
-                hideTooltip();
-                return;
-            }
+            // Hover detection
             const idx = hitTest(e.clientX, e.clientY);
-            applyHover(idx);
-            if (idx >= 0) {
-                showTooltip(idx, e.clientX, e.clientY);
-            } else {
-                hideTooltip();
+            if (idx !== hovIdx.current) {
+                if (hovIdx.current >= 0) setNodeHover(hovIdx.current, false);
+                hovIdx.current = idx;
+                if (idx >= 0) setNodeHover(idx, true);
             }
+            updateTooltip(idx, e.clientX, e.clientY);
         };
 
         const onUp = () => {
             isDragging.current = false;
+            // Re-enable transitions
+            cards.forEach(c => c.style.transition = 'background 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s');
         };
 
         window.addEventListener('pointerdown', onDown);
-        window.addEventListener('pointermove', onMove);
+        window.addEventListener('pointermove', onMove, { passive: true });
         window.addEventListener('pointerup', onUp);
 
         return () => {
-            cancelAnimationFrame(raf);
+            cancelAnimationFrame(rafId);
             window.removeEventListener('pointerdown', onDown);
             window.removeEventListener('pointermove', onMove);
             window.removeEventListener('pointerup', onUp);
@@ -250,70 +233,57 @@ export default function SkillSphere({ skills, shadowPalette }: SkillSphereProps)
     }, [init, rotate, skills]);
 
     return (
-        <div className="w-full relative mt-12">
-            <div className="text-center mb-8">
+        <div className="w-full relative py-12 select-none overflow-hidden">
+            <div className="text-center mb-8 pointer-events-none">
                 <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-emerald-600 via-cyan-600 to-pink-600 bg-clip-text text-transparent uppercase tracking-tight">
-                    Skill Sphere
+                    Interactive Skill Cloud
                 </h3>
-                <p className="text-[10px] md:text-xs text-slate-500 font-bold uppercase tracking-[0.2em] mt-2">
-                    Drag to rotate • Interactive 3D Cloud
+                <p className="text-[10px] md:text-xs text-slate-500 font-bold uppercase tracking-[0.2em] mt-2 opacity-60">
+                    Drag to explore • Powered by Pure DOM
                 </p>
             </div>
 
             <div
                 ref={containerRef}
-                className="relative w-full h-[380px] md:h-[520px] cursor-grab active:cursor-grabbing select-none overflow-hidden rounded-3xl"
+                className="relative w-full h-[400px] md:h-[550px] mx-auto overflow-visible cursor-grab active:cursor-grabbing"
                 style={{ touchAction: 'none' }}
             >
                 {skills.map((skill) => (
-                    <div key={skill.slug} className="sn absolute top-0 left-0 will-change-transform pointer-events-none">
+                    <div key={skill.slug} className="sn absolute top-0 left-0 will-change-transform pointer-events-none origin-center">
                         <div
-                            className="sc flex items-center gap-3 px-4 py-3 rounded-2xl border-2 backdrop-blur-md"
-                            style={{
-                                background: 'rgba(255,255,255,0.7)',
-                                borderColor: 'rgba(255,255,255,0.4)',
-                                boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-                                transition: 'background 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s',
-                            }}
+                            className="sc flex items-center gap-3 px-4 py-2.5 rounded-xl border border-black/5 bg-white/80 shadow-sm transition-all duration-200 ease-out"
                         >
                             <img
                                 src={`${SIMPLE_ICONS_PRIMARY}/${skill.slug}`}
                                 alt={skill.name}
-                                className="w-8 h-8 md:w-10 md:h-10 object-contain"
-                                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                                className="w-7 h-7 md:w-9 md:h-9 object-contain"
+                                onError={(e) => { (e.target as HTMLImageElement).style.visibility = 'hidden'; }}
                                 loading="lazy"
                                 draggable={false}
                             />
-                            <span
-                                className="sl text-xs md:text-sm font-extrabold whitespace-nowrap"
-                                style={{ color: '#334155', transition: 'color 0.2s' }}
-                            >
+                            <span className="sl text-xs font-bold text-slate-800 whitespace-nowrap">
                                 {skill.name}
                             </span>
                         </div>
                     </div>
                 ))}
 
-                {/* Tooltip — manipulated directly via ref, never re-rendered */}
+                {/* Floating Tooltip */}
                 <div
                     ref={tooltipRef}
-                    className="absolute pointer-events-none z-[200]"
-                    style={{ opacity: 0, transform: 'translateX(-50%)', transition: 'opacity 0.1s' }}
+                    className="absolute pointer-events-none z-[1000] transition-opacity duration-150 ease-out"
+                    style={{ transform: 'translateX(-50%)', opacity: 0 }}
                 >
-                    <div
-                        className="px-4 py-2 rounded-xl text-white text-xs font-extrabold uppercase tracking-wider shadow-2xl whitespace-nowrap relative"
-                    >
-                        &nbsp;
-                        <div className="ta absolute left-1/2 -translate-x-1/2 -bottom-1 w-2 h-2 rotate-45" />
-                    </div>
+                    <div className="tb px-3 py-1.5 rounded-lg text-white text-[10px] md:text-xs font-bold uppercase tracking-wider shadow-xl" />
+                    <div className="ta mx-auto w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[5px] border-t-white" />
                 </div>
             </div>
 
-            <div className="flex justify-center mt-5">
-                <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/40 backdrop-blur-md border border-white/50 shadow-sm">
+            <div className="flex justify-center mt-6 pointer-events-none">
+                <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100/50 border border-slate-200/50">
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-[10px] md:text-xs font-bold text-slate-600 uppercase tracking-wider">
-                        {skills.length} Technologies
+                    <span className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest">
+                        {skills.length} Tech Stack
                     </span>
                 </div>
             </div>
