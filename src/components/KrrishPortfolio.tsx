@@ -3,6 +3,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import heroImage from "@/assets/Hero-Krish.png";
 import { ScrollToTopButton } from "./ui/scroll-to-top";
+import DotGrid from "./DotGrid";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -445,6 +446,19 @@ export default function KrrishPortfolio() {
 
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-100 via-pink-50 to-emerald-100 opacity-70 animate-gradient" />
+        <div className="absolute inset-0 opacity-85">
+          <DotGrid
+            dotSize={10}
+            gap={20}
+            baseColor="#64748b"
+            activeColor="#0f172a"
+            proximity={130}
+            shockRadius={220}
+            shockStrength={4}
+            resistance={700}
+            returnDuration={1.3}
+          />
+        </div>
       </div>
 
       <header className="sticky top-4 z-40 mx-auto max-w-7xl px-6">
