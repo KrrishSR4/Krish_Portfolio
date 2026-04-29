@@ -3,7 +3,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import heroImage from "@/assets/Hero-Krish.png";
 import { ScrollToTopButton } from "./ui/scroll-to-top";
-import SkillSphere from "./SkillSphere";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -186,7 +186,7 @@ export default function KrrishPortfolio() {
         ? `rgba(${parsedHover.r}, ${parsedHover.g}, ${parsedHover.b}, ${Math.min(0.45, parsedHover.a * 0.6)})`
         : hoverColor;
       const baseShadow = "0 0 0 rgba(0,0,0,0)";
-      const hoverShadow = `0 75px 130px ${hoverColor}, 0 -32px 60px ${topShadowColor}`;
+      const hoverShadow = `0 75px 130px ${hoverColor}, 0 - 32px 60px ${topShadowColor} `;
 
       gsap.fromTo(el, { y: 30, opacity: 0, scale: 0.96 }, { y: 0, opacity: 1, scale: 1, duration: 0.6, delay: i * 0.03, ease: "power3.out" });
       gsap.set(el, { boxShadow: baseShadow });
@@ -439,7 +439,7 @@ export default function KrrishPortfolio() {
       <div className="fixed top-0 left-0 right-0 h-1.5 bg-white/30 backdrop-blur-sm z-50">
         <div
           className="h-full bg-gradient-to-r from-emerald-500 via-cyan-500 to-pink-500 transition-all duration-150"
-          style={{ width: `${scrollProgress}%` }}
+          style={{ width: `${scrollProgress}% ` }}
         />
       </div>
 
@@ -451,16 +451,16 @@ export default function KrrishPortfolio() {
         <div className="backdrop-blur-md bg-[#d9d9d9]/95 rounded-2xl p-4 flex items-center justify-between shadow-md">
           <div className="text-lg font-extrabold uppercase tracking-wider">KRISH MISHRA</div>
           <nav className="flex items-center gap-4">
-            <button onClick={() => scrollTo("about")} className={`text-sm uppercase tracking-wide px-3 py-2 rounded-lg transition-all ${active === "about" ? "bg-[#6f7480] text-white" : "bg-[#b1b5be] text-slate-900 hover:bg-[#8f949d] hover:text-white"}`}>
+            <button onClick={() => scrollTo("about")} className={`text - sm uppercase tracking - wide px - 3 py - 2 rounded - lg transition - all ${active === "about" ? "bg-[#6f7480] text-white" : "bg-[#b1b5be] text-slate-900 hover:bg-[#8f949d] hover:text-white"} `}>
               About
             </button>
-            <button onClick={() => scrollTo("skills")} className={`text-sm uppercase tracking-wide px-3 py-2 rounded-lg transition-all ${active === "skills" ? "bg-[#6f7480] text-white" : "bg-[#b1b5be] text-slate-900 hover:bg-[#8f949d] hover:text-white"}`}>
+            <button onClick={() => scrollTo("skills")} className={`text - sm uppercase tracking - wide px - 3 py - 2 rounded - lg transition - all ${active === "skills" ? "bg-[#6f7480] text-white" : "bg-[#b1b5be] text-slate-900 hover:bg-[#8f949d] hover:text-white"} `}>
               Skills
             </button>
-            <button onClick={() => scrollTo("projects")} className={`text-sm uppercase tracking-wide px-3 py-2 rounded-lg transition-all ${active === "projects" ? "bg-[#6f7480] text-white" : "bg-[#b1b5be] text-slate-900 hover:bg-[#8f949d] hover:text-white"}`}>
+            <button onClick={() => scrollTo("projects")} className={`text - sm uppercase tracking - wide px - 3 py - 2 rounded - lg transition - all ${active === "projects" ? "bg-[#6f7480] text-white" : "bg-[#b1b5be] text-slate-900 hover:bg-[#8f949d] hover:text-white"} `}>
               Projects
             </button>
-            <button onClick={() => scrollTo("connect")} className={`text-sm uppercase tracking-wide px-3 py-2 rounded-lg transition-all ${active === "connect" ? "bg-[#6f7480] text-white" : "bg-[#b1b5be] text-slate-900 hover:bg-[#8f949d] hover:text-white"}`}>
+            <button onClick={() => scrollTo("connect")} className={`text - sm uppercase tracking - wide px - 3 py - 2 rounded - lg transition - all ${active === "connect" ? "bg-[#6f7480] text-white" : "bg-[#b1b5be] text-slate-900 hover:bg-[#8f949d] hover:text-white"} `}>
               Contact
             </button>
           </nav>
@@ -503,7 +503,7 @@ export default function KrrishPortfolio() {
                 🚀 Open to internships
               </span>
               <span className="px-4 py-2 rounded-xl bg-gradient-to-r from-pink-400/30 to-purple-400/30 backdrop-blur-sm border border-pink-300/50 font-semibold text-pink-700">
-                💼 Available for freelance
+                💼 Open to full-time roles
               </span>
             </div>
 
@@ -519,7 +519,7 @@ export default function KrrishPortfolio() {
               </p>
               <div className="pt-3 border-t border-slate-200">
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  💡 I love transforming <span className="italic">complex UI challenges</span> into <span className="font-bold text-emerald-600">simple, delightful experiences</span>. Currently seeking <span className="font-bold text-pink-600">internship opportunities</span> and exciting <span className="font-bold text-cyan-600">freelance projects</span> — let's collaborate!
+                  💡 I love transforming <span className="italic">complex UI challenges</span> into <span className="font-bold text-emerald-600">simple, delightful experiences</span>. Currently seeking <span className="font-bold text-pink-600">internship opportunities</span> and <span className="font-bold text-cyan-600">full-time job opportunities</span> — let's connect!
                 </p>
               </div>
             </div>
@@ -590,7 +590,7 @@ export default function KrrishPortfolio() {
               <div className="text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                 100%
               </div>
-              <div className="text-sm font-bold text-slate-700 mt-2">Client Satisfaction</div>
+              <div className="text-sm font-bold text-slate-700 mt-2">Project Quality</div>
               <div className="text-xs text-slate-600 mt-1">Quality Focused</div>
             </div>
           </div>
@@ -632,23 +632,19 @@ export default function KrrishPortfolio() {
                       <div className={`text-xl font-bold ${s.color} transition-colors`}>{s.name}</div>
                       <div className="text-xs text-slate-500 font-medium">Proficient</div>
                     </div>
-                  </div>
+                  </div >
                 );
               })}
-            </div>
-          </div>
+            </div >
+          </div >
           <p className="mt-6 text-sm text-slate-600 bg-white/40 backdrop-blur-sm p-4 rounded-xl border border-white/50">
             💡 <span className="font-bold text-cyan-600">Pro Tip:</span> Use your mouse wheel or swipe to scroll through my skills horizontally while this section stays pinned! Each technology represents real-world project experience.
           </p>
 
-          {/* Interactive Skill Sphere */}
-          <div className="mt-12">
-            <SkillSphere skills={skills} shadowPalette={skillShadowPalette} />
-          </div>
         </section>
 
         {/* PROJECTS - 6 dummy with interactive hover */}
-        <section id="projects" className="py-16">
+        < section id="projects" className="py-16" >
           <div className="mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent">
               🚀 Featured Projects
@@ -694,10 +690,10 @@ export default function KrrishPortfolio() {
               </div>
             ))}
           </div>
-        </section>
+        </section >
 
         {/* LET'S CONNECT */}
-        <section id="connect" className="py-16">
+        < section id="connect" className="py-16" >
           <div className="mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
               🤝 Let's Connect & Collaborate
@@ -716,7 +712,7 @@ export default function KrrishPortfolio() {
                 </p>
                 <div className="bg-gradient-to-r from-emerald-400/20 to-cyan-400/20 rounded-2xl p-4 border border-emerald-300/30">
                   <p className="text-sm text-slate-700">
-                    💼 <span className="font-bold">Open for:</span> Full-time roles, Internships, Freelance projects, Technical consultations
+                    💼 <span className="font-bold">Open for:</span> Full-time roles, Internships, Graduate roles
                   </p>
                 </div>
               </div>
@@ -767,8 +763,8 @@ export default function KrrishPortfolio() {
               </div>
             </div>
           </div>
-        </section>
-      </main>
+        </section >
+      </main >
       <footer className="max-w-7xl mx-auto px-6 pb-8 pt-8 text-center space-y-4 border-t border-white/60 bg-white/55 backdrop-blur-md rounded-t-3xl shadow-[0_-36px_75px_rgba(15,23,42,0.2),0_48px_110px_rgba(15,23,42,0.18)]">
         <div className="flex items-center justify-center gap-2">
           <span className="text-2xl">💻</span>
@@ -784,6 +780,6 @@ export default function KrrishPortfolio() {
         </p>
       </footer>
       <ScrollToTopButton />
-    </div>
+    </div >
   );
 }
