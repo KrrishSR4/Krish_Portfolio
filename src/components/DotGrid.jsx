@@ -1,13 +1,15 @@
 'use client';
-
 import { useRef, useEffect, useCallback, useMemo } from 'react';
 import { gsap } from 'gsap';
+import { InertiaPlugin } from 'gsap/InertiaPlugin';
 
 import './DotGrid.css';
 
+gsap.registerPlugin(InertiaPlugin);
+
 const throttle = (func, limit) => {
   let lastCall = 0;
-  return function throttled(...args) {
+  return function (...args) {
     const now = performance.now();
     if (now - lastCall >= limit) {
       lastCall = now;
@@ -79,7 +81,7 @@ const DotGrid = ({
     canvas.style.width = `${width}px`;
     canvas.style.height = `${height}px`;
     const ctx = canvas.getContext('2d');
-    if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (ctx) ctx.scale(dpr, dpr);
 
     const cols = Math.floor((width + gap) / (dotSize + gap));
     const rows = Math.floor((height + gap) / (dotSize + gap));
@@ -127,19 +129,19 @@ const DotGrid = ({
         const dy = dot.cy - py;
         const dsq = dx * dx + dy * dy;
 
-        let color = baseColor;
+        let style = baseColor;
         if (dsq <= proxSq) {
           const dist = Math.sqrt(dsq);
           const t = 1 - dist / proximity;
           const r = Math.round(baseRgb.r + (activeRgb.r - baseRgb.r) * t);
           const g = Math.round(baseRgb.g + (activeRgb.g - baseRgb.g) * t);
           const b = Math.round(baseRgb.b + (activeRgb.b - baseRgb.b) * t);
-          color = `rgb(${r},${g},${b})`;
+          style = `rgb(${r},${g},${b})`;
         }
 
         ctx.save();
         ctx.translate(ox, oy);
-        ctx.fillStyle = color;
+        ctx.fillStyle = style;
         ctx.fill(circlePath);
         ctx.restore();
       }
@@ -156,7 +158,7 @@ const DotGrid = ({
     let ro = null;
     if ('ResizeObserver' in window) {
       ro = new ResizeObserver(buildGrid);
-      if (wrapperRef.current) ro.observe(wrapperRef.current);
+      wrapperRef.current && ro.observe(wrapperRef.current);
     } else {
       window.addEventListener('resize', buildGrid);
     }
@@ -167,28 +169,7 @@ const DotGrid = ({
   }, [buildGrid]);
 
   useEffect(() => {
-    const animateDot = (dot, pushX, pushY) => {
-      gsap.killTweensOf(dot);
-      gsap.to(dot, {
-        xOffset: pushX,
-        yOffset: pushY,
-        duration: Math.max(0.25, resistance / 1200),
-        ease: 'power2.out',
-        onComplete: () => {
-          gsap.to(dot, {
-            xOffset: 0,
-            yOffset: 0,
-            duration: returnDuration,
-            ease: 'elastic.out(1,0.75)',
-            onComplete: () => {
-              dot._inertiaApplied = false;
-            },
-          });
-        },
-      });
-    };
-
-    const onMove = (e) => {
+    const onMove = e => {
       const now = performance.now();
       const pr = pointerRef.current;
       const dt = pr.lastTime ? now - pr.lastTime : 16;
@@ -210,9 +191,7 @@ const DotGrid = ({
       pr.vy = vy;
       pr.speed = speed;
 
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      const rect = canvas.getBoundingClientRect();
+      const rect = canvasRef.current.getBoundingClientRect();
       pr.x = e.clientX - rect.left;
       pr.y = e.clientY - rect.top;
 
@@ -220,27 +199,49 @@ const DotGrid = ({
         const dist = Math.hypot(dot.cx - pr.x, dot.cy - pr.y);
         if (speed > speedTrigger && dist < proximity && !dot._inertiaApplied) {
           dot._inertiaApplied = true;
+          gsap.killTweensOf(dot);
           const pushX = (dot.cx - pr.x) * 0.5 + vx * 0.004;
           const pushY = (dot.cy - pr.y) * 0.5 + vy * 0.004;
-          animateDot(dot, pushX, pushY);
+          gsap.to(dot, {
+            inertia: { xOffset: pushX, yOffset: pushY, resistance },
+            onComplete: () => {
+              gsap.to(dot, {
+                xOffset: 0,
+                yOffset: 0,
+                duration: returnDuration,
+                ease: 'elastic.out(1,0.75)',
+              });
+              dot._inertiaApplied = false;
+            },
+          });
         }
       }
     };
 
-    const onClick = (e) => {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      const rect = canvas.getBoundingClientRect();
+    const onClick = e => {
+      const rect = canvasRef.current.getBoundingClientRect();
       const cx = e.clientX - rect.left;
       const cy = e.clientY - rect.top;
       for (const dot of dotsRef.current) {
         const dist = Math.hypot(dot.cx - cx, dot.cy - cy);
         if (dist < shockRadius && !dot._inertiaApplied) {
           dot._inertiaApplied = true;
+          gsap.killTweensOf(dot);
           const falloff = Math.max(0, 1 - dist / shockRadius);
           const pushX = (dot.cx - cx) * shockStrength * falloff;
           const pushY = (dot.cy - cy) * shockStrength * falloff;
-          animateDot(dot, pushX, pushY);
+          gsap.to(dot, {
+            inertia: { xOffset: pushX, yOffset: pushY, resistance },
+            onComplete: () => {
+              gsap.to(dot, {
+                xOffset: 0,
+                yOffset: 0,
+                duration: returnDuration,
+                ease: 'elastic.out(1,0.75)',
+              });
+              dot._inertiaApplied = false;
+            },
+          });
         }
       }
     };

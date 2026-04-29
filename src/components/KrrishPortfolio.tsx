@@ -435,7 +435,7 @@ export default function KrrishPortfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-pink-50 to-emerald-50 text-slate-900 antialiased">
+    <div className="relative min-h-screen bg-gradient-to-br from-cyan-50 via-pink-50 to-emerald-50 text-slate-900 antialiased overflow-hidden">
       {/* Scroll Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-1.5 bg-white/30 backdrop-blur-sm z-50">
         <div
@@ -444,19 +444,19 @@ export default function KrrishPortfolio() {
         />
       </div>
 
-      <div className="fixed inset-0 -z-10">
+      <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-100 via-pink-50 to-emerald-100 opacity-70 animate-gradient" />
-        <div className="absolute inset-0 opacity-85">
+        <div className="absolute inset-0 opacity-100">
           <DotGrid
-            dotSize={10}
-            gap={20}
-            baseColor="#64748b"
-            activeColor="#0f172a"
-            proximity={130}
-            shockRadius={220}
-            shockStrength={4}
-            resistance={700}
-            returnDuration={1.3}
+            dotSize={5}
+            gap={15}
+            baseColor="#535353"
+            activeColor="#000000"
+            proximity={120}
+            shockRadius={250}
+            shockStrength={5}
+            resistance={750}
+            returnDuration={1.5}
           />
         </div>
       </div>
@@ -481,7 +481,7 @@ export default function KrrishPortfolio() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 pb-20">
+      <main className="relative z-10 max-w-7xl mx-auto px-6 pb-20">
         {/* ABOUT */}
         <section id="about" className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start py-16">
           {/* LEFT: Main heading and typing effect */}
@@ -779,7 +779,7 @@ export default function KrrishPortfolio() {
           </div>
         </section >
       </main >
-      <footer className="max-w-7xl mx-auto px-6 pb-8 pt-8 text-center space-y-4 border-t border-white/60 bg-white/55 backdrop-blur-md rounded-t-3xl shadow-[0_-36px_75px_rgba(15,23,42,0.2),0_48px_110px_rgba(15,23,42,0.18)]">
+      <footer className="relative z-10 max-w-7xl mx-auto px-6 pb-8 pt-8 text-center space-y-4 border-t border-white/60 bg-white/55 backdrop-blur-md rounded-t-3xl shadow-[0_-36px_75px_rgba(15,23,42,0.2),0_48px_110px_rgba(15,23,42,0.18)]">
         <div className="flex items-center justify-center gap-2">
           <span className="text-2xl">💻</span>
           <p className="text-lg font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
