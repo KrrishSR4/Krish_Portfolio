@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Shojumaru&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,6 +10,7 @@
       opacity: 0;
       transform: translateY(28px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -50,7 +53,7 @@ All colors MUST be HSL.
     --ring: 164 76% 46%;
 
     --radius: 1rem;
-    
+
     --gradient-primary: linear-gradient(135deg, hsl(164 76% 46%), hsl(188 94% 40%));
     --gradient-accent: linear-gradient(135deg, hsl(330 81% 60%), hsl(188 94% 40%));
     --gradient-bg: linear-gradient(to bottom right, hsl(180 100% 97%), hsl(330 100% 96%), hsl(164 100% 96%));
@@ -106,7 +109,7 @@ All colors MUST be HSL.
     --border: 215 25% 18%;
     --input: 215 25% 18%;
     --ring: 164 76% 46%;
-    
+
     --gradient-primary: linear-gradient(135deg, hsl(164 76% 46%), hsl(188 94% 40%));
     --gradient-accent: linear-gradient(135deg, hsl(330 81% 60%), hsl(188 94% 40%));
     --gradient-bg: linear-gradient(to bottom right, hsl(215 25% 10%), hsl(330 40% 15%), hsl(164 40% 15%));
@@ -134,7 +137,9 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    cursor: none; /* Hide default cursor */
+    font-family: 'Shojumaru', cursive;
+    cursor: none;
+    /* Hide default cursor */
   }
 
   /* Hide cursor on all elements */
