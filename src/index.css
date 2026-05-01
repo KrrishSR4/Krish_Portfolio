@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Apply Iceberg font globally */
+/* Apply Quantico font globally */
 * {
-  font-family: 'Iceberg', cursive !important;
+  font-family: 'Quantico', cursive !important;
 }
 
 @layer utilities {
