@@ -36,9 +36,9 @@ export const ScrollToTopButton = () => {
           onClick={scrollToTop}
           size="icon"
           aria-label="Scroll to top"
-          className="h-16 w-16 rounded-full bg-white text-slate-900 shadow-[0_0_150px_rgba(15,23,42,0.82),0_0_90px_rgba(15,23,42,0.68),0_0_38px_rgba(30,41,59,0.75)] border border-white/80 transition-all duration-300 hover:-translate-y-1 hover:bg-[#d9d9d9] hover:text-slate-900 hover:shadow-[0_0_220px_rgba(15,23,42,0.92),0_0_130px_rgba(15,23,42,0.78),0_0_48px_rgba(30,41,59,0.85)]"
+          className="h-16 w-16 rounded-full bg-gradient-to-r from-[#f0fdf4] to-[#dcfce7] backdrop-blur-md border-2 border-[#1f7a1a] shadow-[0_0_150px_rgba(31,122,26,0.3),0_0_90px_rgba(31,122,26,0.25),0_0_38px_rgba(31,122,26,0.2)] transition-all duration-300 hover:-translate-y-1 hover:bg-gradient-to-r hover:from-[#dcfce7] hover:to-[#bbf7d0] hover:border-[#2da44e] hover:shadow-[0_0_220px_rgba(31,122,26,0.4),0_0_130px_rgba(31,122,26,0.35),0_0_48px_rgba(31,122,26,0.3)]"
         >
-          <ArrowUp className="h-7 w-7 text-slate-900" />
+          <ArrowUp className="h-7 w-7 text-[#1f7a1a]" />
         </Button>
       )}
     </div>
