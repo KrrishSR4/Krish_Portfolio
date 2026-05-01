@@ -452,16 +452,16 @@ export default function KrrishPortfolio() {
 
             <div className="flex gap-3 flex-wrap">
               <span className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-300/40 to-green-300/40 backdrop-blur-sm border border-emerald-500/40 font-semibold text-emerald-900">
-                🚀 Open to internships
+                Open to internships
               </span>
               <span className="px-4 py-2 rounded-xl bg-gradient-to-r from-slate-300/45 to-emerald-200/45 backdrop-blur-sm border border-slate-400/50 font-semibold text-slate-800">
-                💼 Open to full-time roles
+                Open to full-time roles
               </span>
             </div>
 
             <div className="space-y-4 bg-white/40 backdrop-blur-sm rounded-2xl p-6 border border-white/50">
               <h3 className="text-lg font-bold bg-gradient-to-r from-slate-700 to-slate-900 bg-clip-text text-transparent">
-                🎯 What I Do
+                What I Do
               </h3>
               <p className="text-sm text-slate-700 leading-relaxed">
                 I specialize in building <span className="font-bold text-green-700">responsive single-page applications</span> with a laser focus on <span className="font-bold text-emerald-700">UI performance</span>, <span className="font-bold text-slate-700">accessibility</span>, and <span className="font-bold text-lime-700">smooth animations</span>.
@@ -471,7 +471,7 @@ export default function KrrishPortfolio() {
               </p>
               <div className="pt-3 border-t border-slate-200">
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  💡 I love transforming <span className="italic">complex UI challenges</span> into <span className="font-bold text-emerald-700">simple, delightful experiences</span>. Currently seeking <span className="font-bold text-green-700">internship opportunities</span> and <span className="font-bold text-slate-800">full-time job opportunities</span> — let's connect!
+                  I love transforming <span className="italic">complex UI challenges</span> into <span className="font-bold text-emerald-700">simple, delightful experiences</span>. Currently seeking <span className="font-bold text-green-700">internship opportunities</span> and <span className="font-bold text-slate-800">full-time job opportunities</span> — let's connect!
                 </p>
               </div>
             </div>
