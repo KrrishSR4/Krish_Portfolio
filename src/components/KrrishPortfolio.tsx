@@ -420,7 +420,7 @@ export default function KrrishPortfolio() {
         {/* ABOUT */}
         <section id="about" className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start py-16">
           {/* LEFT: Main heading and typing effect */}
-          <div className="order-2 md:order-1 space-y-8">
+          <div className="order-2 md:order-1 space-y-8 bg-white/60 backdrop-blur-sm rounded-3xl p-8 border border-white/40 shadow-lg">
             <h1 className="text-5xl md:text-7xl font-extrabold uppercase tracking-wider text-left leading-tight">
               <span className="block bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 via-green-600 to-lime-600">
                 HEY, I'M KRISH MISHRA
