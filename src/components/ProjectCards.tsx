@@ -160,7 +160,7 @@ function Carousel({ images, autoDelay = 2600 }: { images: string[]; autoDelay?: 
               src={src}
               alt={`Project screenshot ${i + 1}`}
               loading="lazy"
-              className="w-full h-full object-cover brightness-90 transition-[filter] duration-300 group-hover/carousel:brightness-100"
+              className="w-full h-full object-contain bg-white brightness-100 transition-[filter] duration-300 group-hover/carousel:brightness-110"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#161b22]/70 pointer-events-none" />
           </div>
@@ -238,6 +238,8 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
         <div className="flex gap-2.5 mt-auto">
           <a
             href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-1.5 font-['JetBrains_Mono',monospace] text-[12px] font-medium px-3 py-2 rounded-lg bg-[#2ea043] text-white border border-[#2ea043] transition-all duration-250 hover:bg-[#3fb950] hover:shadow-[0_0_20px_rgba(46,160,67,0.32)] hover:-translate-y-px"
           >
             <ExternalIcon size={12} />
@@ -245,6 +247,8 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
           </a>
           <a
             href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-1.5 font-['JetBrains_Mono',monospace] text-[12px] font-medium px-3 py-2 rounded-lg bg-[#f6f8fa] text-[#57606a] border border-[#d0d7de] transition-all duration-250 hover:border-[#8c959f] hover:text-[#24292f] hover:bg-[#eef2f6] hover:-translate-y-px"
           >
             <GithubIcon size={12} />

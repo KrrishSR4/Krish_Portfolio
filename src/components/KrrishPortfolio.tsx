@@ -476,7 +476,7 @@ export default function KrrishPortfolio() {
 
           {/* RIGHT: Hero card with image */}
           <div className="order-1 md:order-2 flex justify-end">
-            <div ref={heroRef} className="relative w-full max-w-xl md:max-w-2xl h-80 md:h-[32rem] rounded-3xl bg-white/60 backdrop-blur-md border border-white/30 shadow-2xl transform-gpu overflow-hidden">
+            <div ref={heroRef} className="relative w-full max-w-xl md:max-w-2xl h-80 md:h-[32rem] rounded-3xl bg-white/60 backdrop-blur-md border-4 border-[#1f7a1a] shadow-2xl transform-gpu overflow-hidden">
               <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10">
                 <div className="text-2xl md:text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-green-600">
                   UI / UX & Web Dev
