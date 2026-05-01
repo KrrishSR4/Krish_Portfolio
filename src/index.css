@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Apply Aladin font globally */
+/* Apply Iceberg font globally */
 * {
-  font-family: 'Aladin', cursive !important;
+  font-family: 'Iceberg', cursive !important;
 }
 
 @layer utilities {
