@@ -380,7 +380,7 @@ export default function KrrishPortfolio() {
 
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/60 via-white/50 to-green-100/70 opacity-90 animate-gradient" />
-        <div className="absolute inset-0 opacity-50 [mask-image:linear-gradient(to_right,transparent_0%,transparent_30%,black_50%,black_70%,transparent_90%,transparent_100%)]">
+        <div className="absolute inset-0 opacity-50 [mask-image:linear-gradient(to_right,black_0%,black_25%,rgba(0,0,0,0.7)_50%,rgba(0,0,0,0.4)_75%,transparent_100%)]">
           <DotGrid
             dotSize={6}
             gap={18}
