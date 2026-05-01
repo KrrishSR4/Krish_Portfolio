@@ -492,14 +492,14 @@ export default function KrrishPortfolio() {
               <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-4 z-10">
                 <a
                   href="#connect"
-                  className="group/btn px-6 py-3 rounded-xl bg-gradient-to-r from-[#f6f8fa] to-[#eef2f6] backdrop-blur-md border border-[#d0d7de] font-medium text-[#24292f] hover:scale-105 hover:shadow-xl transition-all duration-300 hover:from-[#eef2f6] hover:to-[#e6edf3] hover:border-[#8c959f] cursor-pointer"
+                  className="group/btn px-6 py-3 rounded-xl bg-gradient-to-r from-[#f6f8fa] to-[#eef2f6] backdrop-blur-md border-2 border-[#8c959f] font-medium text-[#24292f] hover:scale-105 hover:shadow-xl transition-all duration-300 hover:from-[#eef2f6] hover:to-[#e6edf3] hover:border-[#6f7480] cursor-pointer"
                 >
                   <span className="group-hover/btn:tracking-wider transition-all duration-300">Let's Talk</span>
                 </a>
                 <a
                   href="/resume.pdf"
                   download
-                  className="group/btn px-6 py-3 rounded-xl bg-gradient-to-r from-[#f0fdf4] to-[#dcfce7] backdrop-blur-md border border-[#2da44e]/45 font-medium text-[#1f883d] hover:scale-105 hover:shadow-xl transition-all duration-300 hover:from-[#dcfce7] hover:to-[#bbf7d0] hover:border-[#1f883d]/60 cursor-pointer"
+                  className="group/btn px-6 py-3 rounded-xl bg-gradient-to-r from-[#f0fdf4] to-[#dcfce7] backdrop-blur-md border-2 border-[#1f883d] font-medium text-[#1f883d] hover:scale-105 hover:shadow-xl transition-all duration-300 hover:from-[#dcfce7] hover:to-[#bbf7d0] hover:border-[#2da44e] cursor-pointer"
                 >
                   <span className="group-hover/btn:tracking-wider transition-all duration-300">Resume</span>
                 </a>
