@@ -4,6 +4,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import heroImage from "@/assets/Hero-Krish.png";
 import { ScrollToTopButton } from "./ui/scroll-to-top";
 import DotGrid from "./DotGrid";
+import ProjectCards from "./ProjectCards";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -37,7 +38,6 @@ export default function KrrishPortfolio() {
   const skillsRef = useRef<HTMLDivElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
-  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
   const socialRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const [typedText, setTypedText] = useState("");
   const [active, setActive] = useState("about");
@@ -262,21 +262,6 @@ export default function KrrishPortfolio() {
     };
   }, []);
 
-  // Project card hover parallax using refs
-  const onProjectMove = (e: React.MouseEvent, idx: number) => {
-    const el = projectRefs.current[idx];
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    gsap.to(el, { x: x * 8, y: y * 6, rotationY: x * 6, rotationX: -y * 4, duration: 0.35, ease: "power3.out" });
-  };
-  const onProjectLeave = (idx: number) => {
-    const el = projectRefs.current[idx];
-    if (!el) return;
-    gsap.to(el, { x: 0, y: 0, rotationY: 0, rotationX: 0, duration: 0.6, ease: "power3.out" });
-  };
-
   // Social hover effect
   const onSocialHover = (idx: number) => {
     const el = socialRefs.current[idx];
@@ -295,18 +280,6 @@ export default function KrrishPortfolio() {
       if (e.beta === null || e.gamma === null) return;
       const x = e.gamma / 90;
       const y = (e.beta - 90) / 90;
-
-      // Apply tilt to project cards
-      projectRefs.current.forEach((el) => {
-        if (el) {
-          gsap.to(el, {
-            rotationY: x * 3,
-            rotationX: -y * 3,
-            duration: 0.6,
-            ease: "power2.out",
-          });
-        }
-      });
 
       // Apply tilt to social links
       socialRefs.current.forEach((el) => {
@@ -380,45 +353,6 @@ export default function KrrishPortfolio() {
     { name: "GCP", slug: "googlecloud", color: "text-blue-500" },
     { name: "Linux", slug: "linux", color: "text-yellow-600" },
     { name: "Shell Script", slug: "gnubash", color: "text-green-600" },
-  ];
-
-  const projects = [
-    {
-      title: "E-Commerce Platform",
-      desc: "Full-stack e-commerce solution with real-time inventory, payment gateway integration, and admin dashboard. Built with React, Node.js, and MongoDB for seamless shopping experience.",
-      tags: ["React", "Node.js", "MongoDB", "Stripe"],
-      gradient: "from-emerald-500 to-green-500"
-    },
-    {
-      title: "AI ChatBot Assistant",
-      desc: "Intelligent chatbot powered by NLP and machine learning. Provides 24/7 customer support with context-aware responses and seamless CRM integration.",
-      tags: ["Python", "TensorFlow", "React", "OpenAI"],
-      gradient: "from-green-500 to-lime-500"
-    },
-    {
-      title: "Task Management SaaS",
-      desc: "Collaborative project management tool with real-time updates, kanban boards, and team analytics. Features include drag-and-drop, notifications, and reporting.",
-      tags: ["Next.js", "Supabase", "Tailwind"],
-      gradient: "from-emerald-500 to-teal-600"
-    },
-    {
-      title: "DevOps Pipeline Automation",
-      desc: "CI/CD automation platform streamlining deployment workflows. Integrates with GitHub, Docker, and Kubernetes for automated testing and deployment.",
-      tags: ["Jenkins", "Docker", "K8s", "Terraform"],
-      gradient: "from-slate-600 to-emerald-600"
-    },
-    {
-      title: "Real-time Analytics Dashboard",
-      desc: "Interactive data visualization platform processing millions of events. Features live charts, custom metrics, and exportable reports for business insights.",
-      tags: ["React", "D3.js", "Firebase", "Charts"],
-      gradient: "from-green-600 to-emerald-500"
-    },
-    {
-      title: "Cloud Infrastructure Manager",
-      desc: "Multi-cloud management system for AWS, GCP, and Azure. Provides cost optimization, resource monitoring, and automated scaling capabilities.",
-      tags: ["AWS", "GCP", "Terraform", "Python"],
-      gradient: "from-slate-700 to-green-600"
-    },
   ];
 
   const socials = [
@@ -658,54 +592,9 @@ export default function KrrishPortfolio() {
 
         </section>
 
-        {/* PROJECTS - 6 dummy with interactive hover */}
-        < section id="projects" className="py-16" >
-          <div className="mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-emerald-700 via-green-700 to-slate-700 bg-clip-text text-transparent">
-              🚀 Featured Projects
-            </h2>
-            <p className="text-slate-600 text-lg">
-              Explore my latest work — <span className="font-bold text-green-700">hover</span> for interactive 3D effects!
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((p, idx) => (
-              <div
-                key={p.title}
-                ref={(el) => (projectRefs.current[idx] = el)}
-                onMouseMove={(e) => onProjectMove(e, idx)}
-                onMouseLeave={() => onProjectLeave(idx)}
-                className="group relative p-8 rounded-3xl bg-white/85 backdrop-blur-lg border-2 border-[#d0d7de] shadow-xl hover:shadow-2xl transition-all duration-300 transform-gpu hover:scale-[1.02] overflow-hidden"
-              >
-                {/* Animated gradient background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${p.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
-
-                <div className="relative z-10 space-y-4">
-                  <div className="text-2xl font-extrabold bg-gradient-to-r from-[#1f883d] to-[#2da44e] bg-clip-text text-transparent">
-                    {p.title}
-                  </div>
-                  <div className="text-sm text-slate-700 leading-relaxed">{p.desc}</div>
-                  <div className="flex gap-2 flex-wrap pt-2">
-                    {p.tags.map((t) => (
-                      <span key={t} className="px-3 py-1.5 rounded-full bg-[#f6f8fa] border border-[#d0d7de] text-xs font-semibold text-[#24292f]">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex gap-3 pt-4">
-                    <a className={`flex-1 px-5 py-2.5 rounded-xl bg-gradient-to-r ${p.gradient} text-white font-bold text-center border border-[#1f883d]/50 transition-all hover:shadow-xl cursor-pointer transform hover:scale-105`}>
-                      View Live ✨
-                    </a>
-                    <a className="px-5 py-2.5 rounded-xl bg-[#f6f8fa] border-2 border-[#d0d7de] font-bold text-[#24292f] transition-all hover:bg-[#eef2f6] hover:border-[#8c959f] cursor-pointer transform hover:scale-105">
-                      Code 📂
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section >
+        <div className="py-16">
+          <ProjectCards />
+        </div>
 
         {/* LET'S CONNECT */}
         < section id="connect" className="py-16" >
