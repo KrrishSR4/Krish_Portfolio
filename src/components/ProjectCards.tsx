@@ -189,16 +189,16 @@ function Carousel({ images, autoDelay = 2600 }: { images: string[]; autoDelay?: 
 function ProjectCard({ project, delay }: { project: Project; delay: number }) {
   return (
     <article
-      className="relative group/card bg-[#161b22] border border-[#21262d] rounded-2xl overflow-hidden transition-all duration-350 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-1.5 hover:scale-[1.015] hover:border-[#2ea043] hover:shadow-[0_0_0_1px_#1a5c2a,0_20px_60px_rgba(0,0,0,0.5),0_0_40px_rgba(46,160,67,0.25)] opacity-0 [animation:fadeUp_0.65s_ease_forwards]"
+      className="relative group/card bg-white/92 border border-[#d0d7de] rounded-2xl overflow-hidden transition-all duration-350 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-1.5 hover:scale-[1.015] hover:border-[#2ea44f] hover:shadow-[0_0_0_1px_#2ea44f40,0_20px_60px_rgba(15,23,42,0.15),0_0_40px_rgba(46,160,67,0.2)] opacity-0 [animation:fadeUp_0.65s_ease_forwards]"
       style={{ animationDelay: `${delay}s` }}
     >
-      <div className="absolute inset-0 rounded-2xl pointer-events-none z-0 bg-gradient-to-br from-[rgba(46,160,67,0.1)] to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-350" />
+      <div className="absolute inset-0 rounded-2xl pointer-events-none z-0 bg-gradient-to-br from-[rgba(46,160,67,0.12)] to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-350" />
       <Carousel images={project.images} />
 
       <div className="relative z-10 p-5">
         <div className="flex items-start justify-between mb-2.5">
-          <span className="font-mono text-[11px] text-[#2ea043] bg-[rgba(46,160,67,0.1)] border border-[#1a5c2a] px-2 py-0.5 rounded">#{project.num}</span>
-          <span className="flex items-center gap-1.5 font-mono text-[10px] text-[#2ea043]">
+          <span className="font-['JetBrains_Mono',monospace] text-[11px] text-[#1f883d] bg-[rgba(46,160,67,0.1)] border border-[#2ea44f66] px-2 py-0.5 rounded">#{project.num}</span>
+          <span className="flex items-center gap-1.5 font-['JetBrains_Mono',monospace] text-[10px] text-[#1f883d]">
             <span className="relative flex w-1.5 h-1.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2ea043] opacity-40" />
               <span className="relative inline-flex rounded-full w-1.5 h-1.5 bg-[#2ea043]" />
@@ -207,14 +207,14 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
           </span>
         </div>
 
-        <h3 className="font-['Syne',sans-serif] text-[18px] font-bold text-[#e6edf3] leading-snug mb-2">{project.title}</h3>
-        <p className="font-['JetBrains_Mono',monospace] text-[12px] leading-relaxed text-[#8b949e] mb-4 line-clamp-3">{project.desc}</p>
+        <h3 className="font-['Syne',sans-serif] text-[18px] font-bold text-[#24292f] leading-snug mb-2">{project.title}</h3>
+        <p className="font-['JetBrains_Mono',monospace] text-[12px] leading-relaxed text-[#57606a] mb-4 line-clamp-3">{project.desc}</p>
 
         <div className="flex flex-wrap gap-1.5 mb-4">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="font-['JetBrains_Mono',monospace] text-[11px] px-2.5 py-0.5 rounded-full bg-[#1c2128] border border-[#21262d] text-[#8b949e] cursor-default transition-all duration-200 hover:border-[#2ea043] hover:text-[#3fb950] hover:bg-[rgba(46,160,67,0.07)]"
+              className="font-['JetBrains_Mono',monospace] text-[11px] px-2.5 py-0.5 rounded-full bg-[#f6f8fa] border border-[#d0d7de] text-[#57606a] cursor-default transition-all duration-200 hover:border-[#2ea043] hover:text-[#1f883d] hover:bg-[rgba(46,160,67,0.08)]"
             >
               {tag}
             </span>
@@ -224,14 +224,14 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
         <div className="flex gap-2.5">
           <a
             href={project.liveUrl}
-            className="flex-1 flex items-center justify-center gap-1.5 font-['JetBrains_Mono',monospace] text-[12px] font-medium px-3 py-2 rounded-lg bg-[#2ea043] text-white border border-[#2ea043] transition-all duration-250 hover:bg-[#3fb950] hover:shadow-[0_0_20px_rgba(46,160,67,0.35)] hover:-translate-y-px"
+            className="flex-1 flex items-center justify-center gap-1.5 font-['JetBrains_Mono',monospace] text-[12px] font-medium px-3 py-2 rounded-lg bg-[#2ea043] text-white border border-[#2ea043] transition-all duration-250 hover:bg-[#3fb950] hover:shadow-[0_0_20px_rgba(46,160,67,0.32)] hover:-translate-y-px"
           >
             <ExternalIcon size={12} />
             Live Demo
           </a>
           <a
             href={project.githubUrl}
-            className="flex-1 flex items-center justify-center gap-1.5 font-['JetBrains_Mono',monospace] text-[12px] font-medium px-3 py-2 rounded-lg bg-transparent text-[#8b949e] border border-[#21262d] transition-all duration-250 hover:border-[#6e7681] hover:text-[#e6edf3] hover:bg-[#1c2128] hover:-translate-y-px"
+            className="flex-1 flex items-center justify-center gap-1.5 font-['JetBrains_Mono',monospace] text-[12px] font-medium px-3 py-2 rounded-lg bg-[#f6f8fa] text-[#57606a] border border-[#d0d7de] transition-all duration-250 hover:border-[#8c959f] hover:text-[#24292f] hover:bg-[#eef2f6] hover:-translate-y-px"
           >
             <GithubIcon size={12} />
             GitHub
@@ -244,18 +244,21 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
 
 export default function ProjectCards() {
   return (
-    <section id="projects" className="relative bg-[#0d1117] text-[#e6edf3] px-5 pt-10 pb-20 overflow-x-hidden rounded-3xl border border-[#21262d] font-['Syne',sans-serif]">
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_80%_50%_at_20%_-10%,rgba(46,160,67,0.08),transparent_60%),radial-gradient(ellipse_60%_40%_at_80%_110%,rgba(46,160,67,0.06),transparent_60%)]" />
+    <section
+      id="projects"
+      className="relative bg-gradient-to-br from-white/90 via-slate-50/80 to-emerald-50/75 text-[#24292f] px-5 sm:px-8 pt-10 pb-20 overflow-x-hidden rounded-3xl border-2 border-[#04912a] font-['Syne',sans-serif] shadow-[inset_0_0_0_1px_rgba(4,145,42,0.06)]"
+    >
+      <div className="pointer-events-none absolute inset-0 z-0 rounded-3xl bg-[radial-gradient(ellipse_80%_50%_at_20%_-10%,rgba(46,160,67,0.08),transparent_62%),radial-gradient(ellipse_60%_40%_at_80%_110%,rgba(46,160,67,0.06),transparent_62%)]" />
 
       <div className="relative z-10 max-w-6xl mx-auto">
         <header className="text-center mb-16">
           <p className="font-['JetBrains_Mono',monospace] text-xs tracking-[0.2em] uppercase text-[#2ea043] mb-3 [animation:fadeUp_0.6s_ease_forwards_0.1s] opacity-0">
             // portfolio.projects
           </p>
-          <h2 className="text-[clamp(32px,5vw,56px)] font-extrabold leading-none mb-4 bg-gradient-to-br from-[#e6edf3] to-[#3fb950] bg-clip-text text-transparent [animation:fadeUp_0.6s_ease_forwards_0.2s] opacity-0">
+          <h2 className="text-[clamp(32px,5vw,56px)] font-extrabold leading-none mb-4 bg-gradient-to-br from-[#24292f] to-[#2ea043] bg-clip-text text-transparent [animation:fadeUp_0.6s_ease_forwards_0.2s] opacity-0">
             Things I&apos;ve Built
           </h2>
-          <p className="font-['JetBrains_Mono',monospace] text-sm text-[#8b949e] [animation:fadeUp_0.6s_ease_forwards_0.3s] opacity-0">
+          <p className="font-['JetBrains_Mono',monospace] text-sm text-[#57606a] [animation:fadeUp_0.6s_ease_forwards_0.3s] opacity-0">
             $ ls -la ./projects | grep "production-ready"
           </p>
         </header>

@@ -369,7 +369,7 @@ export default function KrrishPortfolio() {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-slate-100 via-white to-emerald-50 text-slate-900 antialiased overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-slate-100 via-white to-emerald-50 text-slate-900 antialiased overflow-hidden font-['Syne',sans-serif]">
       {/* Scroll Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-1.5 bg-white/30 backdrop-blur-sm z-50">
         <div
