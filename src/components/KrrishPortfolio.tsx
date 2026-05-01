@@ -553,10 +553,10 @@ export default function KrrishPortfolio() {
         <section id="skills" ref={pinRef} className="py-16">
           <div className="mb-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-emerald-700 via-green-700 to-lime-700 bg-clip-text text-transparent">
-              🛠️ Skills & Technologies
+              Skills & Technologies
             </h2>
             <p className="text-slate-600 text-lg">
-              Scroll horizontally to explore my <span className="font-bold text-emerald-700">tech stack</span> 👉
+              Scroll horizontally to explore my <span className="font-bold text-emerald-700">tech stack</span>
             </p>
           </div>
 
@@ -590,7 +590,7 @@ export default function KrrishPortfolio() {
             </div >
           </div >
           <p className="mt-6 text-sm text-slate-700 bg-gradient-to-r from-white/85 to-emerald-50/80 backdrop-blur-sm p-4 rounded-xl border border-[#04912a]/35">
-            💡 <span className="font-bold text-green-700">Pro Tip:</span> Use your mouse wheel or swipe to scroll through my skills horizontally while this section stays pinned! Each technology represents real-world project experience.
+            <span className="font-bold text-green-700">Pro Tip:</span> Use your mouse wheel or swipe to scroll through my skills horizontally while this section stays pinned! Each technology represents real-world project experience.
           </p>
 
         </section>
@@ -603,7 +603,7 @@ export default function KrrishPortfolio() {
         < section id="connect" className="py-16" >
           <div className="mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-emerald-700 via-green-700 to-slate-700 bg-clip-text text-transparent">
-              🤝 Let's Connect & Collaborate
+              Let's Connect & Collaborate
             </h2>
             <p className="text-slate-600 text-lg">
               I'm always excited to discuss <span className="font-bold text-green-700">new opportunities</span>, <span className="font-bold text-emerald-700">creative projects</span>, or just chat about <span className="font-bold text-slate-800">tech</span>!
@@ -613,19 +613,19 @@ export default function KrrishPortfolio() {
           <div className="bg-gradient-to-br from-white/90 to-emerald-50/70 backdrop-blur-lg rounded-3xl p-8 md:p-12 border-2 border-[#d0d7de] shadow-2xl space-y-8">
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-slate-800">Quick Response ⚡</h3>
+                <h3 className="text-2xl font-bold text-slate-800">Quick Response</h3>
                 <p className="text-slate-600 leading-relaxed">
                   I usually respond within <span className="font-bold text-emerald-700">24 hours</span> on most platforms. For urgent inquiries, <span className="font-bold text-green-700">LinkedIn</span> or <span className="font-bold text-slate-800">Email</span> work best!
                 </p>
                 <div className="bg-gradient-to-r from-emerald-100/70 to-green-100/70 rounded-2xl p-4 border border-[#2da44e]/40">
                   <p className="text-sm text-slate-700">
-                    💼 <span className="font-bold">Open for:</span> Full-time roles, Internships, Graduate roles
+                    <span className="font-bold">Open for:</span> Full-time roles, Internships, Graduate roles
                   </p>
                 </div>
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-slate-800">What I'm Looking For 🎯</h3>
+                <h3 className="text-2xl font-bold text-slate-800">What I'm Looking For</h3>
                 <ul className="space-y-2 text-sm text-slate-600">
                   <li className="flex items-start gap-2">
                     <span className="text-emerald-600 font-bold">✓</span>
@@ -648,7 +648,7 @@ export default function KrrishPortfolio() {
             </div>
 
             <div className="pt-6 border-t-2 border-[#d0d7de]/80">
-              <h3 className="text-xl font-bold text-slate-800 mb-6">Find Me On 🌐</h3>
+              <h3 className="text-xl font-bold text-slate-800 mb-6">Find Me On</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {socials.map((s, i) => (
                   <a
