@@ -369,7 +369,7 @@ export default function KrrishPortfolio() {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-slate-100 via-white to-emerald-50 text-slate-900 antialiased overflow-hidden font-['Syne',sans-serif]">
+    <div className="relative min-h-screen bg-gradient-to-br from-slate-50 via-emerald-50/30 to-green-50/40 text-slate-900 antialiased overflow-hidden font-['Syne',sans-serif]">
       {/* Scroll Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-1.5 bg-white/30 backdrop-blur-sm z-50">
         <div
@@ -379,7 +379,7 @@ export default function KrrishPortfolio() {
       </div>
 
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-white to-emerald-100 opacity-80 animate-gradient" />
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/60 via-white/50 to-green-100/70 opacity-90 animate-gradient" />
         <div className="absolute inset-0 opacity-38 [mask-image:linear-gradient(to_right,transparent_0%,transparent_52%,black_78%,black_100%)]">
           <DotGrid
             dotSize={6}
@@ -393,7 +393,7 @@ export default function KrrishPortfolio() {
             returnDuration={1.5}
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-slate-50/80 to-emerald-100/55" />
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/40 via-white/60 to-green-50/50" />
       </div>
 
       <header className="sticky top-4 z-40 mx-auto max-w-7xl px-6">
