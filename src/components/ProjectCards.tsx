@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 type Project = {
   id: number;
-  num: string;
+  num?: string;
   title: string;
   desc: string;
   tags: string[];
@@ -94,20 +94,6 @@ const PROJECTS: Project[] = [
       "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
       "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=600&q=80",
-    ],
-  },
-  {
-    id: 7,
-    num: "07",
-    title: "ChronoSync",
-    desc: "Distributed task scheduler with cron-like syntax, dependency chaining, and a beautiful timeline UI — self-hosted and open source.",
-    tags: ["Elixir", "Phoenix", "React", "SQLite", "Tailwind"],
-    liveUrl: "#",
-    githubUrl: "#",
-    images: [
-      "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80",
-      "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=600&q=80",
-      "https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=600&q=80",
     ],
   },
 ];
@@ -211,7 +197,9 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
 
       <div className="relative z-10 p-5 flex flex-col flex-1">
         <div className="flex items-start justify-between mb-2.5">
-          <span className="font-['JetBrains_Mono',monospace] text-[11px] text-[#1f883d] bg-[rgba(46,160,67,0.1)] border border-[#2ea44f66] px-2 py-0.5 rounded">#{project.num}</span>
+          {project.num && (
+            <span className="font-['JetBrains_Mono',monospace] text-[11px] text-[#1f883d] bg-[rgba(46,160,67,0.1)] border border-[#2ea44f66] px-2 py-0.5 rounded">#{project.num}</span>
+          )}
           <span className="flex items-center gap-1.5 font-['JetBrains_Mono',monospace] text-[10px] text-[#1f883d]">
             <span className="relative flex w-1.5 h-1.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2ea043] opacity-40" />
