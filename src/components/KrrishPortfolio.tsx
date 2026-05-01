@@ -397,8 +397,8 @@ export default function KrrishPortfolio() {
       </div>
 
       <header className="sticky top-4 z-40 mx-auto max-w-7xl px-6">
-        <div className="backdrop-blur-md bg-white/90 border border-[#d0d7de] rounded-2xl p-4 flex items-center justify-between shadow-md">
-          <div className="text-lg font-extrabold uppercase tracking-wider text-[#24292f]">KRISH MISHRA</div>
+        <div className="backdrop-blur-md bg-white/90 border-2 border-[#1f7a1a] rounded-2xl p-4 flex items-center justify-between shadow-md">
+          <div className="text-xl font-extrabold uppercase tracking-wider text-[#24292f]">KRISH MISHRA</div>
           <nav className="flex items-center gap-4">
             <button onClick={() => scrollTo("about")} className={`text-sm uppercase tracking-wide px-3 py-2 rounded-lg border transition-all ${active === "about" ? "bg-[#2da44e] border-[#2da44e] text-white" : "bg-[#f6f8fa] border-[#d0d7de] text-[#24292f] hover:bg-[#eef2f6] hover:border-[#8c959f]"}`}>
               About
