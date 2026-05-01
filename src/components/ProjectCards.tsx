@@ -189,13 +189,13 @@ function Carousel({ images, autoDelay = 2600 }: { images: string[]; autoDelay?: 
 function ProjectCard({ project, delay }: { project: Project; delay: number }) {
   return (
     <article
-      className="relative group/card bg-white/92 border border-[#d0d7de] rounded-2xl overflow-hidden transition-all duration-350 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-1.5 hover:scale-[1.015] hover:border-[#2ea44f] hover:shadow-[0_0_0_1px_#2ea44f40,0_20px_60px_rgba(15,23,42,0.15),0_0_40px_rgba(46,160,67,0.2)] opacity-0 [animation:fadeUp_0.65s_ease_forwards]"
+      className="relative group/card bg-white/92 border border-[#d0d7de] rounded-2xl overflow-hidden transition-all duration-350 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-1.5 hover:scale-[1.015] hover:border-[#2ea44f] hover:shadow-[0_0_0_1px_#2ea44f40,0_20px_60px_rgba(15,23,42,0.15),0_0_40px_rgba(46,160,67,0.2)] opacity-0 [animation:fadeUp_0.65s_ease_forwards] flex flex-col h-full"
       style={{ animationDelay: `${delay}s` }}
     >
       <div className="absolute inset-0 rounded-2xl pointer-events-none z-0 bg-gradient-to-br from-[rgba(46,160,67,0.12)] to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-350" />
       <Carousel images={project.images} />
 
-      <div className="relative z-10 p-5">
+      <div className="relative z-10 p-5 flex flex-col flex-1">
         <div className="flex items-start justify-between mb-2.5">
           <span className="font-['JetBrains_Mono',monospace] text-[11px] text-[#1f883d] bg-[rgba(46,160,67,0.1)] border border-[#2ea44f66] px-2 py-0.5 rounded">#{project.num}</span>
           <span className="flex items-center gap-1.5 font-['JetBrains_Mono',monospace] text-[10px] text-[#1f883d]">
@@ -208,7 +208,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
         </div>
 
         <h3 className="font-['Syne',sans-serif] text-[18px] font-bold text-[#24292f] leading-snug mb-2">{project.title}</h3>
-        <p className="font-['JetBrains_Mono',monospace] text-[12px] leading-relaxed text-[#57606a] mb-4 line-clamp-3">{project.desc}</p>
+        <p className="font-['JetBrains_Mono',monospace] text-[12px] leading-relaxed text-[#57606a] mb-4 line-clamp-3 flex-1">{project.desc}</p>
 
         <div className="flex flex-wrap gap-1.5 mb-4">
           {project.tags.map((tag) => (
@@ -221,7 +221,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
           ))}
         </div>
 
-        <div className="flex gap-2.5">
+        <div className="flex gap-2.5 mt-auto">
           <a
             href={project.liveUrl}
             className="flex-1 flex items-center justify-center gap-1.5 font-['JetBrains_Mono',monospace] text-[12px] font-medium px-3 py-2 rounded-lg bg-[#2ea043] text-white border border-[#2ea043] transition-all duration-250 hover:bg-[#3fb950] hover:shadow-[0_0_20px_rgba(46,160,67,0.32)] hover:-translate-y-px"
