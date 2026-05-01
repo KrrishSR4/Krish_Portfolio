@@ -387,37 +387,37 @@ export default function KrrishPortfolio() {
       title: "E-Commerce Platform",
       desc: "Full-stack e-commerce solution with real-time inventory, payment gateway integration, and admin dashboard. Built with React, Node.js, and MongoDB for seamless shopping experience.",
       tags: ["React", "Node.js", "MongoDB", "Stripe"],
-      gradient: "from-purple-400 to-pink-400"
+      gradient: "from-emerald-500 to-green-500"
     },
     {
       title: "AI ChatBot Assistant",
       desc: "Intelligent chatbot powered by NLP and machine learning. Provides 24/7 customer support with context-aware responses and seamless CRM integration.",
       tags: ["Python", "TensorFlow", "React", "OpenAI"],
-      gradient: "from-cyan-400 to-blue-500"
+      gradient: "from-green-500 to-lime-500"
     },
     {
       title: "Task Management SaaS",
       desc: "Collaborative project management tool with real-time updates, kanban boards, and team analytics. Features include drag-and-drop, notifications, and reporting.",
       tags: ["Next.js", "Supabase", "Tailwind"],
-      gradient: "from-emerald-400 to-teal-500"
+      gradient: "from-emerald-500 to-teal-600"
     },
     {
       title: "DevOps Pipeline Automation",
       desc: "CI/CD automation platform streamlining deployment workflows. Integrates with GitHub, Docker, and Kubernetes for automated testing and deployment.",
       tags: ["Jenkins", "Docker", "K8s", "Terraform"],
-      gradient: "from-orange-400 to-red-500"
+      gradient: "from-slate-600 to-emerald-600"
     },
     {
       title: "Real-time Analytics Dashboard",
       desc: "Interactive data visualization platform processing millions of events. Features live charts, custom metrics, and exportable reports for business insights.",
       tags: ["React", "D3.js", "Firebase", "Charts"],
-      gradient: "from-indigo-400 to-purple-500"
+      gradient: "from-green-600 to-emerald-500"
     },
     {
       title: "Cloud Infrastructure Manager",
       desc: "Multi-cloud management system for AWS, GCP, and Azure. Provides cost optimization, resource monitoring, and automated scaling capabilities.",
       tags: ["AWS", "GCP", "Terraform", "Python"],
-      gradient: "from-pink-400 to-rose-500"
+      gradient: "from-slate-700 to-green-600"
     },
   ];
 
@@ -435,23 +435,23 @@ export default function KrrishPortfolio() {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-cyan-50 via-pink-50 to-emerald-50 text-slate-900 antialiased overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-slate-100 via-white to-emerald-50 text-slate-900 antialiased overflow-hidden">
       {/* Scroll Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-1.5 bg-white/30 backdrop-blur-sm z-50">
         <div
-          className="h-full bg-gradient-to-r from-emerald-500 via-cyan-500 to-pink-500 transition-all duration-150"
+          className="h-full bg-gradient-to-r from-emerald-600 via-green-500 to-lime-500 transition-all duration-150"
           style={{ width: `${scrollProgress}% ` }}
         />
       </div>
 
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-100 via-pink-50 to-emerald-100 opacity-70 animate-gradient" />
-        <div className="absolute inset-0 opacity-55 [mask-image:radial-gradient(circle_at_center,black_62%,transparent_100%)]">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-white to-emerald-100 opacity-80 animate-gradient" />
+        <div className="absolute inset-0 opacity-38 [mask-image:linear-gradient(to_right,transparent_0%,transparent_52%,black_78%,black_100%)]">
           <DotGrid
             dotSize={6}
-            gap={16}
-            baseColor="#334155"
-            activeColor="#0f172a"
+            gap={18}
+            baseColor="#1f2937"
+            activeColor="#16a34a"
             proximity={120}
             shockRadius={250}
             shockStrength={5}
@@ -459,23 +459,23 @@ export default function KrrishPortfolio() {
             returnDuration={1.5}
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/55 via-pink-50/60 to-emerald-50/55" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-slate-50/80 to-emerald-100/55" />
       </div>
 
       <header className="sticky top-4 z-40 mx-auto max-w-7xl px-6">
-        <div className="backdrop-blur-md bg-[#d9d9d9]/95 rounded-2xl p-4 flex items-center justify-between shadow-md">
-          <div className="text-lg font-extrabold uppercase tracking-wider">KRISH MISHRA</div>
+        <div className="backdrop-blur-md bg-white/90 border border-[#d0d7de] rounded-2xl p-4 flex items-center justify-between shadow-md">
+          <div className="text-lg font-extrabold uppercase tracking-wider text-[#24292f]">KRISH MISHRA</div>
           <nav className="flex items-center gap-4">
-            <button onClick={() => scrollTo("about")} className={`text - sm uppercase tracking - wide px - 3 py - 2 rounded - lg transition - all ${active === "about" ? "bg-[#6f7480] text-white" : "bg-[#b1b5be] text-slate-900 hover:bg-[#8f949d] hover:text-white"} `}>
+            <button onClick={() => scrollTo("about")} className={`text-sm uppercase tracking-wide px-3 py-2 rounded-lg border transition-all ${active === "about" ? "bg-[#2da44e] border-[#2da44e] text-white" : "bg-[#f6f8fa] border-[#d0d7de] text-[#24292f] hover:bg-[#eef2f6] hover:border-[#8c959f]"}`}>
               About
             </button>
-            <button onClick={() => scrollTo("skills")} className={`text - sm uppercase tracking - wide px - 3 py - 2 rounded - lg transition - all ${active === "skills" ? "bg-[#6f7480] text-white" : "bg-[#b1b5be] text-slate-900 hover:bg-[#8f949d] hover:text-white"} `}>
+            <button onClick={() => scrollTo("skills")} className={`text-sm uppercase tracking-wide px-3 py-2 rounded-lg border transition-all ${active === "skills" ? "bg-[#2da44e] border-[#2da44e] text-white" : "bg-[#f6f8fa] border-[#d0d7de] text-[#24292f] hover:bg-[#eef2f6] hover:border-[#8c959f]"}`}>
               Skills
             </button>
-            <button onClick={() => scrollTo("projects")} className={`text - sm uppercase tracking - wide px - 3 py - 2 rounded - lg transition - all ${active === "projects" ? "bg-[#6f7480] text-white" : "bg-[#b1b5be] text-slate-900 hover:bg-[#8f949d] hover:text-white"} `}>
+            <button onClick={() => scrollTo("projects")} className={`text-sm uppercase tracking-wide px-3 py-2 rounded-lg border transition-all ${active === "projects" ? "bg-[#2da44e] border-[#2da44e] text-white" : "bg-[#f6f8fa] border-[#d0d7de] text-[#24292f] hover:bg-[#eef2f6] hover:border-[#8c959f]"}`}>
               Projects
             </button>
-            <button onClick={() => scrollTo("connect")} className={`text - sm uppercase tracking - wide px - 3 py - 2 rounded - lg transition - all ${active === "connect" ? "bg-[#6f7480] text-white" : "bg-[#b1b5be] text-slate-900 hover:bg-[#8f949d] hover:text-white"} `}>
+            <button onClick={() => scrollTo("connect")} className={`text-sm uppercase tracking-wide px-3 py-2 rounded-lg border transition-all ${active === "connect" ? "bg-[#2da44e] border-[#2da44e] text-white" : "bg-[#f6f8fa] border-[#d0d7de] text-[#24292f] hover:bg-[#eef2f6] hover:border-[#8c959f]"}`}>
               Contact
             </button>
           </nav>
@@ -488,36 +488,36 @@ export default function KrrishPortfolio() {
           {/* LEFT: Main heading and typing effect */}
           <div className="order-2 md:order-1 space-y-8">
             <h1 className="text-5xl md:text-7xl font-extrabold uppercase tracking-wider text-left leading-tight">
-              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500">
+              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 via-green-600 to-lime-600">
                 HEY, I'M KRISH MISHRA
               </span>
             </h1>
 
             <div className="text-xl md:text-2xl font-semibold leading-relaxed min-h-[2.5rem] flex items-center">
               <div className="flex items-center gap-2">
-                <span className="inline-block w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 via-cyan-400 to-pink-500">{typedText}</span>
-                <span className="inline-block w-0.5 h-6 bg-gradient-to-b from-pink-500 to-cyan-500 animate-pulse ml-1"></span>
+                <span className="inline-block w-2 h-2 bg-emerald-600 rounded-full animate-pulse"></span>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 via-green-600 to-lime-600">{typedText}</span>
+                <span className="inline-block w-0.5 h-6 bg-gradient-to-b from-emerald-700 to-green-500 animate-pulse ml-1"></span>
               </div>
             </div>
 
             <div className="space-y-4">
               <p className="text-xl md:text-2xl font-bold text-slate-800">
-                <span className="bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent">Fast.</span>{" "}
-                <span className="bg-gradient-to-r from-cyan-500 to-cyan-600 bg-clip-text text-transparent">Vibrant.</span>{" "}
-                <span className="bg-gradient-to-r from-pink-500 to-pink-600 bg-clip-text text-transparent">Interactive.</span>
+                <span className="bg-gradient-to-r from-emerald-700 to-green-600 bg-clip-text text-transparent">Fast.</span>{" "}
+                <span className="bg-gradient-to-r from-green-700 to-lime-600 bg-clip-text text-transparent">Vibrant.</span>{" "}
+                <span className="bg-gradient-to-r from-slate-700 to-emerald-700 bg-clip-text text-transparent">Interactive.</span>
               </p>
 
-              <p className="text-lg text-slate-700 leading-relaxed">
-                I build <span className="font-bold text-emerald-600">modern web experiences</span> with a focus on <span className="font-bold text-cyan-600">performance</span>, <span className="font-bold text-pink-600">delightful UI</span>, and <span className="font-bold text-purple-600">smooth animations</span> that captivate users.
+              <p className="text-lg text-slate-800 leading-relaxed">
+                I build <span className="font-bold text-emerald-700">modern web experiences</span> with a focus on <span className="font-bold text-green-700">performance</span>, <span className="font-bold text-slate-700">delightful UI</span>, and <span className="font-bold text-lime-700">smooth animations</span> that captivate users.
               </p>
             </div>
 
             <div className="flex gap-3 flex-wrap">
-              <span className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-400/30 to-cyan-400/30 backdrop-blur-sm border border-emerald-300/50 font-semibold text-emerald-700">
+              <span className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-300/40 to-green-300/40 backdrop-blur-sm border border-emerald-500/40 font-semibold text-emerald-900">
                 🚀 Open to internships
               </span>
-              <span className="px-4 py-2 rounded-xl bg-gradient-to-r from-pink-400/30 to-purple-400/30 backdrop-blur-sm border border-pink-300/50 font-semibold text-pink-700">
+              <span className="px-4 py-2 rounded-xl bg-gradient-to-r from-slate-300/45 to-emerald-200/45 backdrop-blur-sm border border-slate-400/50 font-semibold text-slate-800">
                 💼 Open to full-time roles
               </span>
             </div>
@@ -527,14 +527,14 @@ export default function KrrishPortfolio() {
                 🎯 What I Do
               </h3>
               <p className="text-sm text-slate-700 leading-relaxed">
-                I specialize in building <span className="font-bold text-cyan-600">responsive single-page applications</span> with a laser focus on <span className="font-bold text-emerald-600">UI performance</span>, <span className="font-bold text-purple-600">accessibility</span>, and <span className="font-bold text-pink-600">smooth animations</span>.
+                I specialize in building <span className="font-bold text-green-700">responsive single-page applications</span> with a laser focus on <span className="font-bold text-emerald-700">UI performance</span>, <span className="font-bold text-slate-700">accessibility</span>, and <span className="font-bold text-lime-700">smooth animations</span>.
               </p>
               <p className="text-sm text-slate-700 leading-relaxed">
                 My toolkit includes cutting-edge technologies: <span className="font-semibold text-blue-600">React</span>, <span className="font-semibold text-slate-800">Next.js</span>, <span className="font-semibold text-cyan-500">Tailwind CSS</span>, <span className="font-semibold text-green-600">Node.js</span>, and cloud platforms like <span className="font-semibold text-orange-500">AWS</span>, <span className="font-semibold text-blue-500">GCP</span>, and <span className="font-semibold text-amber-500">Firebase</span>.
               </p>
               <div className="pt-3 border-t border-slate-200">
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  💡 I love transforming <span className="italic">complex UI challenges</span> into <span className="font-bold text-emerald-600">simple, delightful experiences</span>. Currently seeking <span className="font-bold text-pink-600">internship opportunities</span> and <span className="font-bold text-cyan-600">full-time job opportunities</span> — let's connect!
+                  💡 I love transforming <span className="italic">complex UI challenges</span> into <span className="font-bold text-emerald-700">simple, delightful experiences</span>. Currently seeking <span className="font-bold text-green-700">internship opportunities</span> and <span className="font-bold text-slate-800">full-time job opportunities</span> — let's connect!
                 </p>
               </div>
             </div>
@@ -544,7 +544,7 @@ export default function KrrishPortfolio() {
           <div className="order-1 md:order-2 flex justify-end">
             <div ref={heroRef} className="relative w-full max-w-xl md:max-w-2xl h-80 md:h-[32rem] rounded-3xl bg-white/60 backdrop-blur-md border border-white/30 shadow-2xl transform-gpu overflow-hidden">
               <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10">
-                <div className="text-2xl md:text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-emerald-600">
+                <div className="text-2xl md:text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-green-600">
                   UI / UX & Web Dev
                 </div>
               </div>
@@ -558,14 +558,14 @@ export default function KrrishPortfolio() {
               <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-4 z-10">
                 <a
                   href="#connect"
-                  className="group/btn px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-200/80 to-emerald-200/80 backdrop-blur-md border border-white/40 font-medium text-slate-800 hover:scale-105 hover:shadow-xl transition-all duration-300 hover:from-cyan-300/90 hover:to-emerald-300/90 cursor-pointer"
+                  className="group/btn px-6 py-3 rounded-xl bg-gradient-to-r from-[#f6f8fa] to-[#eef2f6] backdrop-blur-md border border-[#d0d7de] font-medium text-[#24292f] hover:scale-105 hover:shadow-xl transition-all duration-300 hover:from-[#eef2f6] hover:to-[#e6edf3] hover:border-[#8c959f] cursor-pointer"
                 >
                   <span className="group-hover/btn:tracking-wider transition-all duration-300">Let's Talk</span>
                 </a>
                 <a
                   href="/resume.pdf"
                   download
-                  className="group/btn px-6 py-3 rounded-xl bg-gradient-to-r from-pink-200/80 to-purple-200/80 backdrop-blur-md border border-white/40 font-medium text-slate-800 hover:scale-105 hover:shadow-xl transition-all duration-300 hover:from-pink-300/90 hover:to-purple-300/90 cursor-pointer"
+                  className="group/btn px-6 py-3 rounded-xl bg-gradient-to-r from-[#f0fdf4] to-[#dcfce7] backdrop-blur-md border border-[#2da44e]/45 font-medium text-[#1f883d] hover:scale-105 hover:shadow-xl transition-all duration-300 hover:from-[#dcfce7] hover:to-[#bbf7d0] hover:border-[#1f883d]/60 cursor-pointer"
                 >
                   <span className="group-hover/btn:tracking-wider transition-all duration-300">Resume</span>
                 </a>
@@ -577,32 +577,32 @@ export default function KrrishPortfolio() {
         {/* STATS & ACHIEVEMENTS */}
         <section className="py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="group bg-gradient-to-br from-emerald-400/30 to-cyan-400/30 backdrop-blur-sm rounded-2xl p-6 border-2 border-emerald-300/40 hover:scale-105 transition-all transform hover:border-emerald-400">
-              <div className="text-4xl font-extrabold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
+            <div className="group bg-gradient-to-br from-emerald-300/35 to-green-300/35 backdrop-blur-sm rounded-2xl p-6 border-2 border-emerald-400/50 hover:scale-105 transition-all transform hover:border-emerald-500">
+              <div className="text-4xl font-extrabold bg-gradient-to-r from-emerald-700 to-green-700 bg-clip-text text-transparent">
                 15+
               </div>
               <div className="text-sm font-bold text-slate-700 mt-2">Projects Completed</div>
               <div className="text-xs text-slate-600 mt-1">Web & Mobile Apps</div>
             </div>
 
-            <div className="group bg-gradient-to-br from-purple-400/30 to-pink-400/30 backdrop-blur-sm rounded-2xl p-6 border-2 border-purple-300/40 hover:scale-105 transition-all transform hover:border-purple-400">
-              <div className="text-4xl font-extrabold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <div className="group bg-gradient-to-br from-slate-300/35 to-emerald-200/35 backdrop-blur-sm rounded-2xl p-6 border-2 border-slate-400/45 hover:scale-105 transition-all transform hover:border-emerald-500">
+              <div className="text-4xl font-extrabold bg-gradient-to-r from-slate-700 to-emerald-700 bg-clip-text text-transparent">
                 3+
               </div>
               <div className="text-sm font-bold text-slate-700 mt-2">Years Experience</div>
               <div className="text-xs text-slate-600 mt-1">Learning & Building</div>
             </div>
 
-            <div className="group bg-gradient-to-br from-orange-400/30 to-red-400/30 backdrop-blur-sm rounded-2xl p-6 border-2 border-orange-300/40 hover:scale-105 transition-all transform hover:border-orange-400">
-              <div className="text-4xl font-extrabold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+            <div className="group bg-gradient-to-br from-green-200/35 to-lime-200/35 backdrop-blur-sm rounded-2xl p-6 border-2 border-green-300/45 hover:scale-105 transition-all transform hover:border-green-500">
+              <div className="text-4xl font-extrabold bg-gradient-to-r from-green-700 to-lime-700 bg-clip-text text-transparent">
                 10+
               </div>
               <div className="text-sm font-bold text-slate-700 mt-2">Tech Stack</div>
               <div className="text-xs text-slate-600 mt-1">Modern Technologies</div>
             </div>
 
-            <div className="group bg-gradient-to-br from-blue-400/30 to-indigo-400/30 backdrop-blur-sm rounded-2xl p-6 border-2 border-blue-300/40 hover:scale-105 transition-all transform hover:border-blue-400">
-              <div className="text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            <div className="group bg-gradient-to-br from-slate-300/35 to-green-200/35 backdrop-blur-sm rounded-2xl p-6 border-2 border-slate-400/45 hover:scale-105 transition-all transform hover:border-green-500">
+              <div className="text-4xl font-extrabold bg-gradient-to-r from-slate-700 to-green-700 bg-clip-text text-transparent">
                 100%
               </div>
               <div className="text-sm font-bold text-slate-700 mt-2">Project Quality</div>
@@ -615,22 +615,22 @@ export default function KrrishPortfolio() {
         {/* SKILLS - larger */}
         <section id="skills" ref={pinRef} className="py-16">
           <div className="mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-emerald-600 via-cyan-600 to-purple-600 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-emerald-700 via-green-700 to-lime-700 bg-clip-text text-transparent">
               🛠️ Skills & Technologies
             </h2>
             <p className="text-slate-600 text-lg">
-              Scroll horizontally to explore my <span className="font-bold text-emerald-600">tech stack</span> 👉
+              Scroll horizontally to explore my <span className="font-bold text-emerald-700">tech stack</span> 👉
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-[#f3f4f6] to-[#dfe3eb] backdrop-blur-sm p-10 shadow-2xl border-2 border-white/50">
+          <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-100/85 via-green-100/75 to-lime-100/80 backdrop-blur-sm p-10 shadow-2xl border-2 border-[#04912a]/45">
             <div className="flex gap-8 items-center will-change-transform py-6" ref={skillsRef}>
               {skills.map((s) => {
                 const palette = skillShadowPalette[s.slug] ?? { base: "rgba(100, 116, 139, 0.25)", hover: "rgba(71, 85, 105, 0.45)" };
                 return (
                   <div
                     key={s.slug}
-                    className="skill-card flex-shrink-0 w-64 h-32 p-5 rounded-2xl border-2 border-white/40 bg-white/80 backdrop-blur-md transition duration-150 transform-gpu hover:scale-105 flex items-center gap-5 group"
+                    className="skill-card flex-shrink-0 w-64 h-32 p-5 rounded-2xl border-2 border-[#04912a]/35 bg-white/90 backdrop-blur-md transition duration-150 transform-gpu hover:scale-105 flex items-center gap-5 group"
                     data-shadow-base={palette.base}
                     data-shadow-hover={palette.hover}
                     style={{ boxShadow: "none" }}
@@ -652,8 +652,8 @@ export default function KrrishPortfolio() {
               })}
             </div >
           </div >
-          <p className="mt-6 text-sm text-slate-600 bg-white/40 backdrop-blur-sm p-4 rounded-xl border border-white/50">
-            💡 <span className="font-bold text-cyan-600">Pro Tip:</span> Use your mouse wheel or swipe to scroll through my skills horizontally while this section stays pinned! Each technology represents real-world project experience.
+          <p className="mt-6 text-sm text-slate-700 bg-gradient-to-r from-white/85 to-emerald-50/80 backdrop-blur-sm p-4 rounded-xl border border-[#04912a]/35">
+            💡 <span className="font-bold text-green-700">Pro Tip:</span> Use your mouse wheel or swipe to scroll through my skills horizontally while this section stays pinned! Each technology represents real-world project experience.
           </p>
 
         </section>
@@ -661,11 +661,11 @@ export default function KrrishPortfolio() {
         {/* PROJECTS - 6 dummy with interactive hover */}
         < section id="projects" className="py-16" >
           <div className="mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-emerald-700 via-green-700 to-slate-700 bg-clip-text text-transparent">
               🚀 Featured Projects
             </h2>
             <p className="text-slate-600 text-lg">
-              Explore my latest work — <span className="font-bold text-purple-600">hover</span> for interactive 3D effects!
+              Explore my latest work — <span className="font-bold text-green-700">hover</span> for interactive 3D effects!
             </p>
           </div>
 
@@ -676,28 +676,28 @@ export default function KrrishPortfolio() {
                 ref={(el) => (projectRefs.current[idx] = el)}
                 onMouseMove={(e) => onProjectMove(e, idx)}
                 onMouseLeave={() => onProjectLeave(idx)}
-                className="group relative p-8 rounded-3xl bg-white/60 backdrop-blur-lg border-2 border-white/40 shadow-xl hover:shadow-2xl transition-all duration-300 transform-gpu hover:scale-[1.02] overflow-hidden"
+                className="group relative p-8 rounded-3xl bg-white/85 backdrop-blur-lg border-2 border-[#d0d7de] shadow-xl hover:shadow-2xl transition-all duration-300 transform-gpu hover:scale-[1.02] overflow-hidden"
               >
                 {/* Animated gradient background */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${p.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
 
                 <div className="relative z-10 space-y-4">
-                  <div className="text-2xl font-extrabold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
+                  <div className="text-2xl font-extrabold bg-gradient-to-r from-[#1f883d] to-[#2da44e] bg-clip-text text-transparent">
                     {p.title}
                   </div>
                   <div className="text-sm text-slate-700 leading-relaxed">{p.desc}</div>
                   <div className="flex gap-2 flex-wrap pt-2">
                     {p.tags.map((t) => (
-                      <span key={t} className="px-3 py-1.5 rounded-full bg-gradient-to-r from-white/60 to-white/40 backdrop-blur-sm border border-white/50 text-xs font-semibold text-slate-700">
+                      <span key={t} className="px-3 py-1.5 rounded-full bg-[#f6f8fa] border border-[#d0d7de] text-xs font-semibold text-[#24292f]">
                         {t}
                       </span>
                     ))}
                   </div>
                   <div className="flex gap-3 pt-4">
-                    <a className={`flex-1 px-5 py-2.5 rounded-xl bg-gradient-to-r ${p.gradient} text-white font-bold text-center transition-all hover:shadow-xl cursor-pointer transform hover:scale-105`}>
+                    <a className={`flex-1 px-5 py-2.5 rounded-xl bg-gradient-to-r ${p.gradient} text-white font-bold text-center border border-[#1f883d]/50 transition-all hover:shadow-xl cursor-pointer transform hover:scale-105`}>
                       View Live ✨
                     </a>
-                    <a className="px-5 py-2.5 rounded-xl bg-white/60 backdrop-blur-sm border-2 border-white/70 font-bold text-slate-800 transition-all hover:bg-white cursor-pointer transform hover:scale-105">
+                    <a className="px-5 py-2.5 rounded-xl bg-[#f6f8fa] border-2 border-[#d0d7de] font-bold text-[#24292f] transition-all hover:bg-[#eef2f6] hover:border-[#8c959f] cursor-pointer transform hover:scale-105">
                       Code 📂
                     </a>
                   </div>
@@ -710,22 +710,22 @@ export default function KrrishPortfolio() {
         {/* LET'S CONNECT */}
         < section id="connect" className="py-16" >
           <div className="mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-emerald-700 via-green-700 to-slate-700 bg-clip-text text-transparent">
               🤝 Let's Connect & Collaborate
             </h2>
             <p className="text-slate-600 text-lg">
-              I'm always excited to discuss <span className="font-bold text-cyan-600">new opportunities</span>, <span className="font-bold text-purple-600">creative projects</span>, or just chat about <span className="font-bold text-pink-600">tech</span>!
+              I'm always excited to discuss <span className="font-bold text-green-700">new opportunities</span>, <span className="font-bold text-emerald-700">creative projects</span>, or just chat about <span className="font-bold text-slate-800">tech</span>!
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-white/70 to-white/50 backdrop-blur-lg rounded-3xl p-8 md:p-12 border-2 border-white/50 shadow-2xl space-y-8">
+          <div className="bg-gradient-to-br from-white/90 to-emerald-50/70 backdrop-blur-lg rounded-3xl p-8 md:p-12 border-2 border-[#d0d7de] shadow-2xl space-y-8">
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-slate-800">Quick Response ⚡</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  I usually respond within <span className="font-bold text-emerald-600">24 hours</span> on most platforms. For urgent inquiries, <span className="font-bold text-cyan-600">LinkedIn</span> or <span className="font-bold text-blue-500">Email</span> work best!
+                  I usually respond within <span className="font-bold text-emerald-700">24 hours</span> on most platforms. For urgent inquiries, <span className="font-bold text-green-700">LinkedIn</span> or <span className="font-bold text-slate-800">Email</span> work best!
                 </p>
-                <div className="bg-gradient-to-r from-emerald-400/20 to-cyan-400/20 rounded-2xl p-4 border border-emerald-300/30">
+                <div className="bg-gradient-to-r from-emerald-100/70 to-green-100/70 rounded-2xl p-4 border border-[#2da44e]/40">
                   <p className="text-sm text-slate-700">
                     💼 <span className="font-bold">Open for:</span> Full-time roles, Internships, Graduate roles
                   </p>
@@ -736,26 +736,26 @@ export default function KrrishPortfolio() {
                 <h3 className="text-2xl font-bold text-slate-800">What I'm Looking For 🎯</h3>
                 <ul className="space-y-2 text-sm text-slate-600">
                   <li className="flex items-start gap-2">
-                    <span className="text-emerald-500 font-bold">✓</span>
-                    <span><span className="font-bold text-emerald-600">Frontend/Full-stack</span> development roles</span>
+                    <span className="text-emerald-600 font-bold">✓</span>
+                    <span><span className="font-bold text-emerald-700">Frontend/Full-stack</span> development roles</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-cyan-500 font-bold">✓</span>
-                    <span><span className="font-bold text-cyan-600">DevOps & Cloud</span> engineering opportunities</span>
+                    <span className="text-green-600 font-bold">✓</span>
+                    <span><span className="font-bold text-green-700">DevOps & Cloud</span> engineering opportunities</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-purple-500 font-bold">✓</span>
-                    <span><span className="font-bold text-purple-600">Exciting projects</span> with modern tech stacks</span>
+                    <span className="text-slate-600 font-bold">✓</span>
+                    <span><span className="font-bold text-slate-700">Exciting projects</span> with modern tech stacks</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-pink-500 font-bold">✓</span>
-                    <span><span className="font-bold text-pink-600">Collaborative teams</span> that value innovation</span>
+                    <span className="text-emerald-600 font-bold">✓</span>
+                    <span><span className="font-bold text-emerald-700">Collaborative teams</span> that value innovation</span>
                   </li>
                 </ul>
               </div>
             </div>
 
-            <div className="pt-6 border-t-2 border-white/40">
+            <div className="pt-6 border-t-2 border-[#d0d7de]/80">
               <h3 className="text-xl font-bold text-slate-800 mb-6">Find Me On 🌐</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {socials.map((s, i) => (
@@ -765,14 +765,14 @@ export default function KrrishPortfolio() {
                     ref={(el) => (socialRefs.current[i] = el)}
                     onMouseEnter={() => onSocialHover(i)}
                     onMouseLeave={() => onSocialLeave(i)}
-                    className="group flex items-center gap-4 px-5 py-4 rounded-2xl bg-white/70 backdrop-blur-md border-2 border-white/50 hover:border-cyan-300 transition-all transform hover:scale-105"
+                    className="group flex items-center gap-4 px-5 py-4 rounded-2xl bg-[#f6f8fa]/90 backdrop-blur-md border-2 border-[#d0d7de] hover:border-[#2da44e] transition-all transform hover:scale-105"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center group-hover:rotate-12 transition-transform">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-green-700 flex items-center justify-center group-hover:rotate-12 transition-transform">
                       <img src={`https://cdn.simpleicons.org/${s.slug}`} alt={s.name} className="w-6 h-6 object-contain brightness-0 invert" onError={(e) => { e.currentTarget.style.display = "none"; }} />
                     </div>
-                    <span className="text-sm font-bold text-slate-700 group-hover:text-cyan-600 transition-colors">{s.name}</span>
+                    <span className="text-sm font-bold text-slate-700 group-hover:text-emerald-700 transition-colors">{s.name}</span>
                   </a>
                 ))}
               </div>
@@ -780,10 +780,10 @@ export default function KrrishPortfolio() {
           </div>
         </section >
       </main >
-      <footer className="relative z-10 max-w-7xl mx-auto px-6 pb-8 pt-8 text-center space-y-4 border-t border-white/60 bg-white/55 backdrop-blur-md rounded-t-3xl shadow-[0_-36px_75px_rgba(15,23,42,0.2),0_48px_110px_rgba(15,23,42,0.18)]">
+      <footer className="relative z-10 max-w-7xl mx-auto px-6 pb-8 pt-8 text-center space-y-4 border-t-2 border-[#d0d7de] bg-white/90 backdrop-blur-md rounded-t-3xl shadow-[0_-36px_75px_rgba(15,23,42,0.2),0_48px_110px_rgba(15,23,42,0.18)]">
         <div className="flex items-center justify-center gap-2">
           <span className="text-2xl">💻</span>
-          <p className="text-lg font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
+          <p className="text-lg font-bold bg-gradient-to-r from-emerald-700 to-green-700 bg-clip-text text-transparent">
             Krish Mishra
           </p>
         </div>
