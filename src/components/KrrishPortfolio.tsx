@@ -9,9 +9,36 @@ const ProjectCards = lazy(() => import("./ProjectCards"));
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Helper to safely request DeviceOrientation permission on iOS (and fall back on non-iOS)
+// Android device detection and performance optimizations
+const isAndroidDevice = () => {
+  return /Android/i.test(navigator.userAgent);
+};
+
+const isMobileDevice = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
+
+// Android-specific performance settings
+const getAndroidPerformanceSettings = () => {
+  if (!isAndroidDevice()) return {};
+
+  return {
+    willChange: 'transform',
+    transform: 'translateZ(0)', // Hardware acceleration
+    backfaceVisibility: 'hidden' as const,
+    perspective: 1000,
+  };
+};
+
+// Enhanced device orientation detection for Android
 const requestDeviceOrientationPermission = async (): Promise<boolean> => {
   if (typeof window === "undefined") return false;
+
+  // Android devices typically don't need permission prompts
+  if (isAndroidDevice()) {
+    return true;
+  }
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Dev = (window as unknown as Record<string, unknown>).DeviceOrientationEvent as { requestPermission?: () => Promise<string> } | undefined;
   if (Dev && typeof Dev.requestPermission === "function") {
@@ -278,8 +305,13 @@ export default function KrrishPortfolio() {
   useEffect(() => {
     const onOrientationChange = (e: DeviceOrientationEvent) => {
       if (e.beta === null || e.gamma === null) return;
-      const x = e.gamma / 90;
-      const y = (e.beta - 90) / 90;
+
+      // Android-specific optimizations
+      const sensitivity = isAndroidDevice() ? 0.5 : 1;
+      const smoothing = isAndroidDevice() ? 0.1 : 0.15;
+
+      const x = (e.gamma / 90) * sensitivity;
+      const y = ((e.beta - 90) / 90) * sensitivity;
 
       // Apply tilt to social links
       socialRefs.current.forEach((el) => {
@@ -382,34 +414,35 @@ export default function KrrishPortfolio() {
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/60 via-white/50 to-green-100/70 opacity-90 animate-gradient" />
         <div className="absolute inset-0 opacity-50 [mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.4)_25%,rgba(0,0,0,0.7)_50%,black_75%,black_100%)]">
           <DotGrid
-            dotSize={6}
-            gap={18}
+            dotSize={isAndroidDevice() ? 4 : 6}
+            gap={isAndroidDevice() ? 14 : 18}
             baseColor="#1f2937"
             activeColor="#16a34a"
-            proximity={120}
-            shockRadius={250}
-            shockStrength={5}
-            resistance={750}
-            returnDuration={1.5}
+            proximity={isAndroidDevice() ? 80 : 120}
+            shockRadius={isAndroidDevice() ? 150 : 250}
+            shockStrength={isAndroidDevice() ? 3 : 5}
+            resistance={isAndroidDevice() ? 500 : 750}
+            returnDuration={isAndroidDevice() ? 1.0 : 1.5}
+            style={getAndroidPerformanceSettings()}
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/20 via-white/30 to-green-50/25" />
       </div>
 
       <header className="sticky top-4 z-40 mx-auto max-w-7xl px-6">
-        <div className="backdrop-blur-md bg-white/3 border-2 border-[#1f7a1a] rounded-2xl p-4 flex items-center justify-between shadow-md">
-          <div className="text-xl font-extrabold uppercase tracking-wider text-[#24292f]">KRISH MISHRA</div>
-          <nav className="flex items-center gap-4">
-            <button onClick={() => scrollTo("about")} className={`text-sm uppercase tracking-wide px-3 py-2 rounded-lg border transition-all ${active === "about" ? "bg-[#2da44e] border-[#2da44e] text-white" : "bg-[#f6f8fa] border-[#d0d7de] text-[#24292f] hover:bg-[#eef2f6] hover:border-[#8c959f]"}`}>
+        <div className="backdrop-blur-md bg-white/3 border-2 border-[#1f7a1a] rounded-2xl p-3 md:p-4 flex items-center justify-between shadow-md">
+          <div className="text-lg md:text-xl font-extrabold uppercase tracking-wider text-[#24292f]">KRISH MISHRA</div>
+          <nav className="flex items-center gap-2 md:gap-4">
+            <button onClick={() => scrollTo("about")} className={`text-xs md:text-sm uppercase tracking-wide px-2 md:px-3 py-2 rounded-lg border transition-all ${active === "about" ? "bg-[#2da44e] border-[#2da44e] text-white" : "bg-[#f6f8fa] border-[#d0d7de] text-[#24292f] hover:bg-[#eef2f6] hover:border-[#8c959f]"}`}>
               About
             </button>
-            <button onClick={() => scrollTo("skills")} className={`text-sm uppercase tracking-wide px-3 py-2 rounded-lg border transition-all ${active === "skills" ? "bg-[#2da44e] border-[#2da44e] text-white" : "bg-[#f6f8fa] border-[#d0d7de] text-[#24292f] hover:bg-[#eef2f6] hover:border-[#8c959f]"}`}>
+            <button onClick={() => scrollTo("skills")} className={`text-xs md:text-sm uppercase tracking-wide px-2 md:px-3 py-2 rounded-lg border transition-all ${active === "skills" ? "bg-[#2da44e] border-[#2da44e] text-white" : "bg-[#f6f8fa] border-[#d0d7de] text-[#24292f] hover:bg-[#eef2f6] hover:border-[#8c959f]"}`}>
               Skills
             </button>
-            <button onClick={() => scrollTo("projects")} className={`text-sm uppercase tracking-wide px-3 py-2 rounded-lg border transition-all ${active === "projects" ? "bg-[#2da44e] border-[#2da44e] text-white" : "bg-[#f6f8fa] border-[#d0d7de] text-[#24292f] hover:bg-[#eef2f6] hover:border-[#8c959f]"}`}>
+            <button onClick={() => scrollTo("projects")} className={`text-xs md:text-sm uppercase tracking-wide px-2 md:px-3 py-2 rounded-lg border transition-all ${active === "projects" ? "bg-[#2da44e] border-[#2da44e] text-white" : "bg-[#f6f8fa] border-[#d0d7de] text-[#24292f] hover:bg-[#eef2f6] hover:border-[#8c959f]"}`}>
               Projects
             </button>
-            <button onClick={() => scrollTo("connect")} className={`text-sm uppercase tracking-wide px-3 py-2 rounded-lg border transition-all ${active === "connect" ? "bg-[#2da44e] border-[#2da44e] text-white" : "bg-[#f6f8fa] border-[#d0d7de] text-[#24292f] hover:bg-[#eef2f6] hover:border-[#8c959f]"}`}>
+            <button onClick={() => scrollTo("connect")} className={`text-xs md:text-sm uppercase tracking-wide px-2 md:px-3 py-2 rounded-lg border transition-all ${active === "connect" ? "bg-[#2da44e] border-[#2da44e] text-white" : "bg-[#f6f8fa] border-[#d0d7de] text-[#24292f] hover:bg-[#eef2f6] hover:border-[#8c959f]"}`}>
               Contact
             </button>
           </nav>
@@ -479,7 +512,7 @@ export default function KrrishPortfolio() {
 
           {/* RIGHT: Hero card with image */}
           <div className="order-1 md:order-2 flex justify-end">
-            <div ref={heroRef} className="relative w-full max-w-xl md:max-w-2xl h-80 md:h-[32rem] rounded-3xl bg-white/60 backdrop-blur-md border-4 border-[#1f7a1a] shadow-2xl transform-gpu overflow-hidden">
+            <div ref={heroRef} className={`relative w-full max-w-xl md:max-w-2xl h-80 md:h-[32rem] rounded-3xl bg-white/60 backdrop-blur-md border-4 border-[#1f7a1a] shadow-2xl transform-gpu overflow-hidden ${isAndroidDevice() ? 'will-change-transform' : ''}`} style={getAndroidPerformanceSettings()}>
               <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10">
                 <div className="text-2xl md:text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-green-600">
                   UI / UX & Web Dev
