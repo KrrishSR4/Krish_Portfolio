@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+        import { useState, useEffect, useRef, useCallback } from "react";
 
 type Project = {
   id: number;
@@ -29,15 +29,15 @@ const PROJECTS: Project[] = [
   {
     id: 2,
     num: "02",
-    title: "NeuralFlow Dashboard",
-    desc: "Real-time ML pipeline monitoring with live metrics, anomaly detection alerts, and interactive model performance graphs.",
-    tags: ["React", "Python", "TensorFlow", "WebSockets", "D3.js"],
-    liveUrl: "#",
-    githubUrl: "#",
+    title: "RepoXray",
+    desc: "A GitHub analytics tool that analyzes repositories and developer profiles to provide insights on activity, code trends, and project health.",
+    tags: ["GitHub Analytics", "Repository Analysis", "Developer Tools", "Code Analysis", "JavaScript", "React.js", "GitHub API", "Code Quality Metrics", "Developer Productivity", "Tech Stack Analysis"],
+    liveUrl: "https://repoxray.web.app/",
+    githubUrl: "https://github.com/KrrishSR4/RepoXray",
     images: [
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=80",
+      "/assets/project-2/repoxray1.png",
+      "/assets/project-2/repoxray2.png",
+      "/assets/project-2/repoxray3.png",
     ],
   },
   {
