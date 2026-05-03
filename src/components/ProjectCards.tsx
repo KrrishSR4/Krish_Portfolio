@@ -138,7 +138,7 @@ function Carousel({ images, autoDelay = 2600 }: { images: string[]; autoDelay?: 
   };
 
   return (
-    <div className="relative w-full h-80 overflow-hidden bg-[#090d12] group/carousel">
+    <div className="relative w-full h-48 overflow-hidden bg-[#090d12] group/carousel">
       <div className="flex h-full transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.18,1)]" style={{ transform: `translateX(-${current * 100}%)` }}>
         {images.map((src, i) => (
           <div key={i} className="relative flex-shrink-0 w-full h-full">
@@ -146,7 +146,7 @@ function Carousel({ images, autoDelay = 2600 }: { images: string[]; autoDelay?: 
               src={src}
               alt={`Project screenshot ${i + 1}`}
               loading="lazy"
-              className={`w-full h-full object-contain bg-white brightness-100 transition-[filter] duration-300 group-hover/carousel:brightness-110 ${i === 0 || i === 1 ? 'scale-110' : 'scale-120'
+              className={`w-full h-full object-cover bg-white brightness-100 transition-[filter] duration-300 group-hover/carousel:brightness-110 ${i === 0 || i === 1 ? 'scale-125' : 'scale-140'
                 }`}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#161b22]/70 pointer-events-none" />
