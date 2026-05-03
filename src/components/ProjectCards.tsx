@@ -146,8 +146,7 @@ function Carousel({ images, autoDelay = 2600 }: { images: string[]; autoDelay?: 
               src={src}
               alt={`Project screenshot ${i + 1}`}
               loading="lazy"
-              className={`w-full h-full object-cover bg-white brightness-100 transition-[filter] duration-300 group-hover/carousel:brightness-110 ${i === 0 || i === 1 ? 'scale-125' : 'scale-140'
-                }`}
+              className="w-full h-full object-cover bg-white brightness-100 transition-[filter] duration-300 group-hover/carousel:brightness-110"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#161b22]/70 pointer-events-none" />
           </div>
