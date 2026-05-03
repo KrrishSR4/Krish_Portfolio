@@ -145,8 +145,11 @@ function Carousel({ images, autoDelay = 2600 }: { images: string[]; autoDelay?: 
             <img
               src={src}
               alt={`Project screenshot ${i + 1}`}
-              loading="lazy"
+              loading={i === 0 ? "eager" : "lazy"}
+              decoding="async"
+              fetchPriority={i === 0 ? "high" : "auto"}
               className="w-full h-full object-cover bg-white brightness-100 transition-[filter] duration-300 group-hover/carousel:brightness-110"
+              style={{ contentVisibility: 'auto' }}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#161b22]/70 pointer-events-none" />
           </div>

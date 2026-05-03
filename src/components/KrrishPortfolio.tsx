@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, lazy, Suspense } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import heroImage from "@/assets/Hero-Krish.png";
 import { ScrollToTopButton } from "./ui/scroll-to-top";
 import DotGrid from "./DotGrid";
-import ProjectCards from "./ProjectCards";
+const ProjectCards = lazy(() => import("./ProjectCards"));
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -489,7 +489,11 @@ export default function KrrishPortfolio() {
               <img
                 src={heroImage}
                 alt="Hero"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
                 className="absolute inset-0 w-full h-full object-cover opacity-95"
+                style={{ contentVisibility: 'auto' }}
               />
 
               <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-4 z-10">
@@ -579,6 +583,8 @@ export default function KrrishPortfolio() {
                       className="w-16 h-16 object-contain group-hover:scale-110 transition-transform"
                       onError={handleIconError}
                       loading="lazy"
+                      decoding="async"
+                      style={{ contentVisibility: 'auto' }}
                     />
                     <div>
                       <div className={`text-xl font-bold ${s.color} transition-colors`}>{s.name}</div>
@@ -596,7 +602,13 @@ export default function KrrishPortfolio() {
         </section>
 
         <div className="py-16">
-          <ProjectCards />
+          <Suspense fallback={
+            <div className="flex justify-center items-center py-20">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
+            </div>
+          }>
+            <ProjectCards />
+          </Suspense>
         </div>
 
         {/* LET'S CONNECT */}
