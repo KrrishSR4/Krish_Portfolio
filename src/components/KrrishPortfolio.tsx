@@ -340,51 +340,83 @@ export default function KrrishPortfolio() {
   }, []);
 
   const skillShadowPalette: Record<string, { base: string; hover: string }> = {
+    // Languages
+    javascript: { base: "rgba(250, 204, 21, 0.32)", hover: "rgba(250, 204, 21, 0.6)" },
+    typescript: { base: "rgba(49, 120, 198, 0.3)", hover: "rgba(49, 120, 198, 0.58)" },
+    // Frontend
+    react: { base: "rgba(14, 165, 233, 0.28)", hover: "rgba(14, 165, 233, 0.55)" },
+    nextdotjs: { base: "rgba(15, 23, 42, 0.3)", hover: "rgba(15, 23, 42, 0.6)" },
+    threedotjs: { base: "rgba(15, 23, 42, 0.28)", hover: "rgba(15, 23, 42, 0.55)" },
+    tailwindcss: { base: "rgba(6, 182, 212, 0.28)", hover: "rgba(6, 182, 212, 0.55)" },
     html5: { base: "rgba(249, 115, 22, 0.28)", hover: "rgba(249, 115, 22, 0.58)" },
     css3: { base: "rgba(37, 99, 235, 0.26)", hover: "rgba(37, 99, 235, 0.54)" },
-    javascript: { base: "rgba(250, 204, 21, 0.32)", hover: "rgba(250, 204, 21, 0.6)" },
-    tailwindcss: { base: "rgba(6, 182, 212, 0.28)", hover: "rgba(6, 182, 212, 0.55)" },
-    react: { base: "rgba(14, 165, 233, 0.28)", hover: "rgba(14, 165, 233, 0.55)" },
-    angular: { base: "rgba(220, 38, 38, 0.32)", hover: "rgba(220, 38, 38, 0.6)" },
-    firebase: { base: "rgba(245, 158, 11, 0.32)", hover: "rgba(245, 158, 11, 0.6)" },
+    // Backend
     nodedotjs: { base: "rgba(22, 163, 74, 0.32)", hover: "rgba(22, 163, 74, 0.6)" },
     express: { base: "rgba(30, 41, 59, 0.28)", hover: "rgba(15, 23, 42, 0.55)" },
-    nextdotjs: { base: "rgba(15, 23, 42, 0.3)", hover: "rgba(15, 23, 42, 0.6)" },
+    nginx: { base: "rgba(0, 150, 57, 0.3)", hover: "rgba(0, 150, 57, 0.58)" },
+    // Databases
+    postgresql: { base: "rgba(51, 103, 145, 0.3)", hover: "rgba(51, 103, 145, 0.58)" },
     mongodb: { base: "rgba(21, 128, 61, 0.32)", hover: "rgba(21, 128, 61, 0.6)" },
     supabase: { base: "rgba(5, 150, 105, 0.32)", hover: "rgba(5, 150, 105, 0.6)" },
+    firebase: { base: "rgba(245, 158, 11, 0.32)", hover: "rgba(245, 158, 11, 0.6)" },
+    // DevOps / IaC
     docker: { base: "rgba(14, 165, 233, 0.28)", hover: "rgba(14, 165, 233, 0.58)" },
     kubernetes: { base: "rgba(37, 99, 235, 0.3)", hover: "rgba(37, 99, 235, 0.58)" },
-    jenkins: { base: "rgba(220, 38, 38, 0.32)", hover: "rgba(220, 38, 38, 0.6)" },
     terraform: { base: "rgba(124, 58, 237, 0.32)", hover: "rgba(124, 58, 237, 0.62)" },
     ansible: { base: "rgba(220, 38, 38, 0.32)", hover: "rgba(220, 38, 38, 0.6)" },
+    argo: { base: "rgba(239, 124, 53, 0.3)", hover: "rgba(239, 124, 53, 0.58)" },
+    githubactions: { base: "rgba(32, 139, 230, 0.3)", hover: "rgba(32, 139, 230, 0.58)" },
+    jenkins: { base: "rgba(220, 38, 38, 0.32)", hover: "rgba(220, 38, 38, 0.6)" },
+    // Cloud
     amazonaws: { base: "rgba(249, 115, 22, 0.3)", hover: "rgba(249, 115, 22, 0.6)" },
     googlecloud: { base: "rgba(59, 130, 246, 0.3)", hover: "rgba(59, 130, 246, 0.58)" },
-    linux: { base: "rgba(252, 198, 36, 0.3)", hover: "rgba(252, 198, 36, 0.6)" },
-    gnubash: { base: "rgba(78, 170, 37, 0.3)", hover: "rgba(78, 170, 37, 0.6)" },
+    vercel: { base: "rgba(15, 23, 42, 0.28)", hover: "rgba(15, 23, 42, 0.55)" },
+    cloudflare: { base: "rgba(245, 158, 11, 0.3)", hover: "rgba(245, 158, 11, 0.58)" },
+    // Observability
+    prometheus: { base: "rgba(218, 73, 42, 0.3)", hover: "rgba(218, 73, 42, 0.58)" },
+    grafana: { base: "rgba(245, 130, 32, 0.3)", hover: "rgba(245, 130, 32, 0.58)" },
+    datadog: { base: "rgba(99, 44, 166, 0.3)", hover: "rgba(99, 44, 166, 0.58)" },
+    opentelemetry: { base: "rgba(68, 93, 174, 0.3)", hover: "rgba(68, 93, 174, 0.58)" },
   };
 
   const skills = [
+    // Languages
+    { name: "JavaScript", slug: "javascript", color: "text-yellow-500" },
+    { name: "TypeScript", slug: "typescript", color: "text-blue-600" },
+    // Frontend
+    { name: "React.js", slug: "react", color: "text-cyan-400" },
+    { name: "Next.js", slug: "nextdotjs", color: "text-slate-900" },
+    { name: "Three.js", slug: "threedotjs", color: "text-slate-800" },
+    { name: "Tailwind CSS", slug: "tailwindcss", color: "text-cyan-500" },
     { name: "HTML5", slug: "html5", color: "text-orange-600" },
     { name: "CSS3", slug: "css3", color: "text-blue-600" },
-    { name: "JavaScript", slug: "javascript", color: "text-yellow-500" },
-    { name: "Tailwind", slug: "tailwindcss", color: "text-cyan-500" },
-    { name: "React", slug: "react", color: "text-cyan-400" },
-    { name: "Angular", slug: "angular", color: "text-red-600" },
-    { name: "Firebase", slug: "firebase", color: "text-amber-500" },
+    // Backend
     { name: "Node.js", slug: "nodedotjs", color: "text-green-600" },
-    { name: "Express", slug: "express", color: "text-slate-700" },
-    { name: "Next.js", slug: "nextdotjs", color: "text-slate-900" },
+    { name: "Express.js", slug: "express", color: "text-slate-700" },
+    { name: "Nginx", slug: "nginx", color: "text-green-700" },
+    // Databases
+    { name: "PostgreSQL", slug: "postgresql", color: "text-blue-700" },
     { name: "MongoDB", slug: "mongodb", color: "text-green-700" },
     { name: "Supabase", slug: "supabase", color: "text-emerald-600" },
+    { name: "Firebase", slug: "firebase", color: "text-amber-500" },
+    // DevOps / IaC
     { name: "Docker", slug: "docker", color: "text-blue-500" },
     { name: "Kubernetes", slug: "kubernetes", color: "text-blue-600" },
-    { name: "Jenkins", slug: "jenkins", color: "text-red-700" },
     { name: "Terraform", slug: "terraform", color: "text-purple-600" },
     { name: "Ansible", slug: "ansible", color: "text-red-600" },
+    { name: "Argo CD", slug: "argo", color: "text-orange-500" },
+    { name: "GitHub Actions", slug: "githubactions", color: "text-blue-500" },
+    { name: "Jenkins", slug: "jenkins", color: "text-red-700" },
+    // Cloud
     { name: "AWS", slug: "amazonaws", color: "text-orange-500" },
     { name: "GCP", slug: "googlecloud", color: "text-blue-500" },
-    { name: "Linux", slug: "linux", color: "text-yellow-600" },
-    { name: "Shell Script", slug: "gnubash", color: "text-green-600" },
+    { name: "Vercel", slug: "vercel", color: "text-slate-900" },
+    { name: "Cloudflare", slug: "cloudflare", color: "text-amber-500" },
+    // Observability
+    { name: "Prometheus", slug: "prometheus", color: "text-red-600" },
+    { name: "Grafana", slug: "grafana", color: "text-orange-500" },
+    { name: "Datadog", slug: "datadog", color: "text-purple-600" },
+    { name: "OpenTelemetry", slug: "opentelemetry", color: "text-blue-500" },
   ];
 
   const socials = [
