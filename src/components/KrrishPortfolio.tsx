@@ -214,7 +214,7 @@ export default function KrrishPortfolio() {
         ? `rgba(${parsedHover.r}, ${parsedHover.g}, ${parsedHover.b}, ${Math.min(0.45, parsedHover.a * 0.6)})`
         : hoverColor;
       const baseShadow = "0 0 0 rgba(0,0,0,0)";
-      const hoverShadow = `0 75px 130px ${hoverColor}, 0 - 32px 60px ${topShadowColor} `;
+      const hoverShadow = `0 10px 25px ${hoverColor}`;
 
       gsap.fromTo(el, { y: 30, opacity: 0, scale: 0.96 }, { y: 0, opacity: 1, scale: 1, duration: 0.6, delay: i * 0.03, ease: "power3.out" });
       gsap.set(el, { boxShadow: baseShadow });
@@ -293,12 +293,12 @@ export default function KrrishPortfolio() {
   const onSocialHover = (idx: number) => {
     const el = socialRefs.current[idx];
     if (!el) return;
-    gsap.to(el, { scale: 1.06, y: -6, boxShadow: "0 18px 40px rgba(14,165,233,0.12)", duration: 0.28, ease: "power2.out" });
+    gsap.to(el, { scale: 1.03, y: -3, boxShadow: "4px 4px 0px #0f172a", duration: 0.2, ease: "power2.out" });
   };
   const onSocialLeave = (idx: number) => {
     const el = socialRefs.current[idx];
     if (!el) return;
-    gsap.to(el, { scale: 1, y: 0, boxShadow: "none", duration: 0.35, ease: "power2.out" });
+    gsap.to(el, { scale: 1, y: 0, boxShadow: "2px 2px 0px #0f172a", duration: 0.2, ease: "power2.out" });
   };
 
   // Device orientation for all interactive elements
@@ -408,30 +408,30 @@ export default function KrrishPortfolio() {
   };
 
   const navButtonClass = (id: string) =>
-    `text-[11px] md:text-xs uppercase tracking-[0.18em] px-3 md:px-4 py-2 rounded-none border-2 border-slate-950 transition-all shadow-[3px_3px_0_#0f172a] hover:-translate-y-0.5 hover:shadow-[5px_5px_0_#0f172a] ${
+    `text-[11px] md:text-xs uppercase tracking-[0.18em] px-3 md:px-4 py-2 rounded-none border border-slate-900 transition-all shadow-[2px_2px_0_#0f172a] hover:-translate-y-0.5 hover:shadow-[3px_3px_0_#0f172a] ${
       active === id
-        ? "bg-lime-300 text-slate-950"
-        : "bg-white text-slate-950 hover:bg-emerald-100"
+        ? "bg-slate-900 text-white"
+        : "bg-white text-slate-900 hover:bg-slate-50"
     }`;
 
   return (
-    <div className="relative min-h-screen bg-[#f6f2e8] text-slate-950 antialiased overflow-hidden font-['Syne',sans-serif]">
+    <div className="relative min-h-screen bg-slate-50 text-slate-950 antialiased overflow-hidden font-['Syne',sans-serif]">
       {/* Scroll Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-1.5 bg-white/30 backdrop-blur-sm z-50">
         <div
-          className="h-full bg-lime-300 transition-all duration-150"
+          className="h-full bg-slate-900 transition-all duration-150"
           style={{ width: `${scrollProgress}% ` }}
         />
       </div>
 
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,23,42,0.045)_1px,transparent_1px),linear-gradient(0deg,rgba(15,23,42,0.045)_1px,transparent_1px)] bg-[size:44px_44px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,23,42,0.035)_1px,transparent_1px),linear-gradient(0deg,rgba(15,23,42,0.035)_1px,transparent_1px)] bg-[size:44px_44px]" />
         <div className="absolute inset-0 opacity-50 [mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.4)_25%,rgba(0,0,0,0.7)_50%,black_75%,black_100%)]">
           <DotGrid
             dotSize={isAndroidDevice() ? 4 : 6}
             gap={isAndroidDevice() ? 14 : 18}
-            baseColor="#1f2937"
-            activeColor="#16a34a"
+            baseColor="#475569"
+            activeColor="#4f46e5"
             proximity={isAndroidDevice() ? 80 : 120}
             shockRadius={isAndroidDevice() ? 150 : 250}
             shockStrength={isAndroidDevice() ? 3 : 5}
@@ -440,11 +440,11 @@ export default function KrrishPortfolio() {
             style={getAndroidPerformanceSettings()}
           />
         </div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(190,242,100,0.34),transparent_32%),radial-gradient(circle_at_86%_8%,rgba(45,212,191,0.22),transparent_30%),linear-gradient(135deg,rgba(246,242,232,0.92),rgba(255,255,255,0.72))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(99,102,241,0.08),transparent_35%),radial-gradient(circle_at_86%_8%,rgba(14,165,233,0.06),transparent_30%),linear-gradient(135deg,rgba(248,250,252,0.95),rgba(255,255,255,0.85))]" />
       </div>
 
       <header className="fixed top-4 left-0 right-0 z-40 mx-auto max-w-7xl px-6">
-        <div className="bg-white/90 border-2 border-slate-950 rounded-none p-3 md:p-4 flex items-center justify-between shadow-[8px_8px_0_#0f172a]">
+        <div className="bg-white/90 border border-slate-900 rounded-none p-3 md:p-4 flex items-center justify-between shadow-[3px_3px_0_#0f172a]">
           <div className="text-lg md:text-xl font-black uppercase tracking-[0.22em] text-slate-950">KRISH MISHRA</div>
           <nav className="flex items-center gap-2 md:gap-4">
             <button onClick={() => scrollTo("about")} className={navButtonClass("about")}>
@@ -467,7 +467,7 @@ export default function KrrishPortfolio() {
         {/* ABOUT */}
         <section id="about" className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start py-16">
           {/* LEFT: Main heading and typing effect */}
-          <div className="order-2 md:order-1 space-y-8 bg-white/88 rounded-none p-6 md:p-8 border-2 border-slate-950 shadow-[12px_12px_0_#0f172a]">
+          <div className="order-2 md:order-1 space-y-8 bg-white/88 rounded-none p-6 md:p-8 border border-slate-900 shadow-[4px_4px_0_#0f172a]">
             <h1 className="text-left uppercase leading-[0.9] max-w-full">
               <span className="block font-['JetBrains_Mono',monospace] text-xl md:text-2xl font-bold tracking-[0.26em] text-slate-700 mb-3">
                 HEY I'M
@@ -477,48 +477,50 @@ export default function KrrishPortfolio() {
               </span>
             </h1>
 
-            <div className="text-base md:text-lg font-semibold leading-none min-h-[2.5rem] flex items-center max-w-full">
+            <div className="text-sm md:text-base font-semibold leading-none min-h-[2.25rem] flex items-center max-w-full">
               <div className="flex items-center gap-2 max-w-full min-w-0">
-                <span className="inline-block w-3 h-3 bg-lime-300 border-2 border-slate-950 animate-pulse"></span>
-                <span className="min-w-0 max-w-full whitespace-nowrap overflow-hidden text-ellipsis font-['JetBrains_Mono',monospace] text-slate-950 bg-white px-2 py-1 border border-slate-950">{typedText}</span>
-                <span className="inline-block w-1 h-7 bg-slate-950 animate-pulse ml-1"></span>
+                <span className="inline-block w-2.5 h-2.5 bg-white border border-slate-900 animate-pulse flex-shrink-0"></span>
+                <span className="inline-block max-w-full whitespace-nowrap overflow-hidden text-ellipsis font-['JetBrains_Mono',monospace] text-slate-950 bg-white px-2 py-1 border border-slate-900">
+                  {typedText}
+                </span>
+                <span className="inline-block w-0.5 h-5 bg-slate-950 animate-pulse ml-0.5 flex-shrink-0"></span>
               </div>
             </div>
 
             <div className="space-y-4">
               <p className="text-xl md:text-2xl font-bold text-slate-800">
-                <span className="bg-lime-200 px-1 border border-slate-950">Fast.</span>{" "}
-                <span className="bg-emerald-100 px-1 border border-slate-950">Vibrant.</span>{" "}
-                <span className="bg-white px-1 border border-slate-950">Interactive.</span>
+                <span className="bg-slate-100 px-1 border border-slate-900">Fast.</span>{" "}
+                <span className="bg-indigo-50 px-1 border border-slate-900">Vibrant.</span>{" "}
+                <span className="bg-white px-1 border border-slate-900">Interactive.</span>
               </p>
 
               <p className="text-lg text-slate-800 leading-relaxed">
-                I build <span className="font-bold text-emerald-700">modern web experiences</span> with a focus on <span className="font-bold text-green-700">performance</span>, <span className="font-bold text-slate-700">delightful UI</span>, and <span className="font-bold text-lime-700">smooth animations</span> that captivate users.
+                I build <span className="font-bold text-slate-900">modern web experiences</span> with a focus on <span className="font-bold text-indigo-600">performance</span>, <span className="font-bold text-slate-700">delightful UI</span>, and <span className="font-bold text-slate-800">smooth animations</span> that captivate users.
               </p>
             </div>
 
             <div className="flex gap-3 flex-wrap">
-              <span className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-300/40 to-green-300/40 backdrop-blur-sm border border-emerald-500/40 font-semibold text-emerald-900">
+              <span className="px-3 py-1 bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-semibold uppercase tracking-wider">
                 Open to internships
               </span>
-              <span className="px-4 py-2 rounded-xl bg-gradient-to-r from-slate-300/45 to-emerald-200/45 backdrop-blur-sm border border-slate-400/50 font-semibold text-slate-800">
+              <span className="px-3 py-1 bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold uppercase tracking-wider">
                 Open to full-time roles
               </span>
             </div>
 
-            <div className="space-y-4 bg-[#f7fee7] rounded-none p-6 border-2 border-slate-950 shadow-[6px_6px_0_#0f172a]">
+            <div className="space-y-4 bg-slate-50 rounded-none p-6 border border-slate-900 shadow-[3px_3px_0_#0f172a]">
               <h3 className="text-lg font-black uppercase tracking-[0.16em] text-slate-950">
                 What I Do
               </h3>
               <p className="text-sm text-slate-700 leading-relaxed">
-                I specialize in building <span className="font-bold text-green-700">responsive single-page applications</span> with a laser focus on <span className="font-bold text-emerald-700">UI performance</span>, <span className="font-bold text-slate-700">accessibility</span>, and <span className="font-bold text-lime-700">smooth animations</span>.
+                I specialize in building <span className="font-bold text-slate-900">responsive single-page applications</span> with a laser focus on <span className="font-bold text-indigo-600">UI performance</span>, <span className="font-bold text-slate-700">accessibility</span>, and <span className="font-bold text-slate-800">smooth animations</span>.
               </p>
               <p className="text-sm text-slate-700 leading-relaxed">
                 My toolkit includes cutting-edge technologies: <span className="font-semibold text-blue-600">React</span>, <span className="font-semibold text-slate-800">Next.js</span>, <span className="font-semibold text-cyan-500">Tailwind CSS</span>, <span className="font-semibold text-green-600">Node.js</span>, and cloud platforms like <span className="font-semibold text-orange-500">AWS</span>, <span className="font-semibold text-blue-500">GCP</span>, and <span className="font-semibold text-amber-500">Firebase</span>.
               </p>
               <div className="pt-3 border-t border-slate-200">
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  I love transforming <span className="italic">complex UI challenges</span> into <span className="font-bold text-emerald-700">simple, delightful experiences</span>. Currently seeking <span className="font-bold text-green-700">internship opportunities</span> and <span className="font-bold text-slate-800">full-time job opportunities</span> — let's connect!
+                  I love transforming <span className="italic">complex UI challenges</span> into <span className="font-bold text-indigo-600">simple, delightful experiences</span>. Currently seeking <span className="font-bold text-slate-900">internship opportunities</span> and <span className="font-bold text-slate-800">full-time job opportunities</span> — let's connect!
                 </p>
               </div>
             </div>
@@ -526,9 +528,9 @@ export default function KrrishPortfolio() {
 
           {/* RIGHT: Hero card with image */}
           <div className="order-1 md:order-2 flex justify-end">
-            <div ref={heroRef} className={`relative w-full max-w-xl md:max-w-2xl h-80 md:h-[32rem] rounded-none bg-white border-[5px] border-slate-950 shadow-[16px_16px_0_#0f172a] transform-gpu overflow-hidden ${isAndroidDevice() ? 'will-change-transform' : ''}`} style={getAndroidPerformanceSettings()}>
+            <div ref={heroRef} className={`relative w-full max-w-xl md:max-w-2xl h-80 md:h-[32rem] rounded-none bg-white border border-slate-900 shadow-[4px_4px_0_#0f172a] transform-gpu overflow-hidden ${isAndroidDevice() ? 'will-change-transform' : ''}`} style={getAndroidPerformanceSettings()}>
               <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10">
-                <div className="text-xl md:text-2xl font-black uppercase tracking-[0.16em] bg-lime-300 border-2 border-slate-950 px-4 py-2 text-slate-950 shadow-[5px_5px_0_#0f172a]">
+                <div className="text-xl md:text-2xl font-black uppercase tracking-[0.16em] bg-slate-100 border border-slate-900 px-4 py-2 text-slate-900 shadow-[3px_3px_0_#0f172a]">
                   UI / UX & Web Dev
                 </div>
               </div>
@@ -546,14 +548,14 @@ export default function KrrishPortfolio() {
               <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-4 z-10">
                 <a
                   href="#connect"
-                  className="group/btn px-6 py-3 rounded-none bg-white border-2 border-slate-950 font-black uppercase tracking-[0.12em] text-slate-950 shadow-[5px_5px_0_#0f172a] hover:-translate-y-1 hover:shadow-[8px_8px_0_#0f172a] transition-all duration-300 cursor-pointer"
+                  className="group/btn px-6 py-3 rounded-none bg-white border border-slate-900 font-black uppercase tracking-[0.12em] text-slate-950 shadow-[3px_3px_0_#0f172a] hover:-translate-y-0.5 hover:shadow-[4px_4px_0_#0f172a] transition-all duration-300 cursor-pointer"
                 >
                   <span className="group-hover/btn:tracking-wider transition-all duration-300">Let's Talk</span>
                 </a>
                 <a
                   href="/resume.pdf"
                   download
-                  className="group/btn px-6 py-3 rounded-none bg-lime-300 border-2 border-slate-950 font-black uppercase tracking-[0.12em] text-slate-950 shadow-[5px_5px_0_#0f172a] hover:-translate-y-1 hover:shadow-[8px_8px_0_#0f172a] transition-all duration-300 cursor-pointer"
+                  className="group/btn px-6 py-3 rounded-none bg-slate-900 border border-slate-900 font-black uppercase tracking-[0.12em] text-white shadow-[3px_3px_0_#0f172a] hover:-translate-y-0.5 hover:shadow-[4px_4px_0_#0f172a] transition-all duration-300 cursor-pointer"
                 >
                   <span className="group-hover/btn:tracking-wider transition-all duration-300">Resume</span>
                 </a>
@@ -565,15 +567,15 @@ export default function KrrishPortfolio() {
         {/* STATS & ACHIEVEMENTS */}
         <section className="py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="group bg-white rounded-none p-6 border-2 border-slate-950 shadow-[7px_7px_0_#0f172a] hover:-translate-y-1 transition-all transform">
-              <div className="text-5xl font-black text-emerald-700">
+            <div className="group bg-white rounded-none p-6 border border-slate-900 shadow-[3px_3px_0_#0f172a] hover:-translate-y-0.5 transition-all transform">
+              <div className="text-5xl font-black text-indigo-600">
                 15+
               </div>
               <div className="text-sm font-black uppercase tracking-[0.12em] text-slate-950 mt-2">Projects Completed</div>
               <div className="text-xs text-slate-600 mt-1 font-['JetBrains_Mono',monospace]">Web & Mobile Apps</div>
             </div>
 
-            <div className="group bg-lime-100 rounded-none p-6 border-2 border-slate-950 shadow-[7px_7px_0_#0f172a] hover:-translate-y-1 transition-all transform">
+            <div className="group bg-white rounded-none p-6 border border-slate-900 shadow-[3px_3px_0_#0f172a] hover:-translate-y-0.5 transition-all transform">
               <div className="text-5xl font-black text-slate-950">
                 3+
               </div>
@@ -581,15 +583,15 @@ export default function KrrishPortfolio() {
               <div className="text-xs text-slate-600 mt-1 font-['JetBrains_Mono',monospace]">Learning & Building</div>
             </div>
 
-            <div className="group bg-emerald-100 rounded-none p-6 border-2 border-slate-950 shadow-[7px_7px_0_#0f172a] hover:-translate-y-1 transition-all transform">
-              <div className="text-5xl font-black text-emerald-700">
+            <div className="group bg-white rounded-none p-6 border border-slate-900 shadow-[3px_3px_0_#0f172a] hover:-translate-y-0.5 transition-all transform">
+              <div className="text-5xl font-black text-indigo-600">
                 10+
               </div>
               <div className="text-sm font-black uppercase tracking-[0.12em] text-slate-950 mt-2">Tech Stack</div>
               <div className="text-xs text-slate-600 mt-1 font-['JetBrains_Mono',monospace]">Modern Technologies</div>
             </div>
 
-            <div className="group bg-white rounded-none p-6 border-2 border-slate-950 shadow-[7px_7px_0_#0f172a] hover:-translate-y-1 transition-all transform">
+            <div className="group bg-white rounded-none p-6 border border-slate-900 shadow-[3px_3px_0_#0f172a] hover:-translate-y-0.5 transition-all transform">
               <div className="text-5xl font-black text-slate-950">
                 100%
               </div>
@@ -607,18 +609,18 @@ export default function KrrishPortfolio() {
               Skills & Technologies
             </h2>
             <p className="text-slate-700 text-lg font-['JetBrains_Mono',monospace]">
-              Scroll horizontally to explore my <span className="font-bold text-emerald-700">tech stack</span>
+              Scroll horizontally to explore my <span className="font-bold text-indigo-600">tech stack</span>
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-none bg-[#ecfccb] p-8 md:p-10 shadow-[12px_12px_0_#0f172a] border-2 border-slate-950">
+          <div className="overflow-hidden rounded-none bg-slate-100 p-8 md:p-10 shadow-[4px_4px_0_#0f172a] border border-slate-900">
             <div className="flex gap-8 items-center will-change-transform py-6" ref={skillsRef}>
               {skills.map((s) => {
                 const palette = skillShadowPalette[s.slug] ?? { base: "rgba(100, 116, 139, 0.25)", hover: "rgba(71, 85, 105, 0.45)" };
                 return (
                   <div
                     key={s.slug}
-                    className="skill-card flex-shrink-0 w-64 h-32 p-5 rounded-none border-2 border-slate-950 bg-white transition duration-150 transform-gpu hover:scale-105 flex items-center gap-5 group shadow-[6px_6px_0_#0f172a]"
+                    className="skill-card flex-shrink-0 w-64 h-32 p-5 rounded-none border border-slate-900 bg-white transition duration-150 transform-gpu hover:scale-105 flex items-center gap-5 group shadow-[3px_3px_0_#0f172a]"
                     data-shadow-base={palette.base}
                     data-shadow-hover={palette.hover}
                     style={{ boxShadow: "none" }}
@@ -642,8 +644,8 @@ export default function KrrishPortfolio() {
               })}
             </div >
           </div >
-          <p className="mt-6 text-sm text-slate-700 bg-gradient-to-r from-white/85 to-emerald-50/80 backdrop-blur-sm p-4 rounded-xl border border-[#04912a]/35">
-            <span className="font-bold text-green-700">Pro Tip:</span> Use your mouse wheel or swipe to scroll through my skills horizontally while this section stays pinned! Each technology represents real-world project experience.
+          <p className="mt-6 text-sm text-slate-700 bg-white/90 p-4 rounded-none border border-slate-200">
+            <span className="font-bold text-slate-900">Pro Tip:</span> Use your mouse wheel or swipe to scroll through my skills horizontally while this section stays pinned! Each technology represents real-world project experience.
           </p>
 
         </section>
@@ -659,24 +661,24 @@ export default function KrrishPortfolio() {
         </div>
 
         {/* LET'S CONNECT */}
-        < section id="connect" className="py-16" >
+        <section id="connect" className="py-16">
           <div className="mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-emerald-700 via-green-700 to-slate-700 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3 text-slate-900">
               Let's Connect & Collaborate
             </h2>
             <p className="text-slate-600 text-lg">
-              I'm always excited to discuss <span className="font-bold text-green-700">new opportunities</span>, <span className="font-bold text-emerald-700">creative projects</span>, or just chat about <span className="font-bold text-slate-800">tech</span>!
+              I'm always excited to discuss <span className="font-bold text-slate-900">new opportunities</span>, <span className="font-bold text-indigo-600">creative projects</span>, or just chat about <span className="font-bold text-slate-800">tech</span>!
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-white/3 to-emerald-50/70 backdrop-blur-lg rounded-3xl p-8 md:p-12 border-2 border-[#d0d7de] shadow-2xl space-y-8">
+          <div className="bg-white p-8 md:p-12 border border-slate-900 shadow-[4px_4px_0_#0f172a] space-y-8">
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-slate-800">Quick Response</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  I usually respond within <span className="font-bold text-emerald-700">24 hours</span> on most platforms. For urgent inquiries, <span className="font-bold text-green-700">LinkedIn</span> or <span className="font-bold text-slate-800">Email</span> work best!
+                  I usually respond within <span className="font-bold text-indigo-600">24 hours</span> on most platforms. For urgent inquiries, <span className="font-bold text-slate-900">LinkedIn</span> or <span className="font-bold text-indigo-600">Email</span> work best!
                 </p>
-                <div className="bg-gradient-to-r from-emerald-100/70 to-green-100/70 rounded-2xl p-4 border border-[#2da44e]/40">
+                <div className="bg-slate-50 p-4 border border-slate-900 shadow-[2px_2px_0_#0f172a] rounded-none">
                   <p className="text-sm text-slate-700">
                     <span className="font-bold">Open for:</span> Full-time roles, Internships, Graduate roles
                   </p>
@@ -687,26 +689,26 @@ export default function KrrishPortfolio() {
                 <h3 className="text-2xl font-bold text-slate-800">What I'm Looking For</h3>
                 <ul className="space-y-2 text-sm text-slate-600">
                   <li className="flex items-start gap-2">
-                    <span className="text-emerald-600 font-bold">✓</span>
-                    <span><span className="font-bold text-emerald-700">Frontend/Full-stack</span> development roles</span>
+                    <span className="text-indigo-600 font-bold">✓</span>
+                    <span><span className="font-bold text-slate-900">Frontend/Full-stack</span> development roles</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">✓</span>
-                    <span><span className="font-bold text-green-700">DevOps & Cloud</span> engineering opportunities</span>
+                    <span className="text-indigo-600 font-bold">✓</span>
+                    <span><span className="font-bold text-indigo-600">DevOps & Cloud</span> engineering opportunities</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-slate-600 font-bold">✓</span>
                     <span><span className="font-bold text-slate-700">Exciting projects</span> with modern tech stacks</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-emerald-600 font-bold">✓</span>
-                    <span><span className="font-bold text-emerald-700">Collaborative teams</span> that value innovation</span>
+                    <span className="text-indigo-600 font-bold">✓</span>
+                    <span><span className="font-bold text-slate-900">Collaborative teams</span> that value innovation</span>
                   </li>
                 </ul>
               </div>
             </div>
 
-            <div className="pt-6 border-t-2 border-[#d0d7de]/80">
+            <div className="pt-6 border-t border-slate-900">
               <h3 className="text-xl font-bold text-slate-800 mb-6">Find Me On</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {socials.map((s, i) => (
@@ -716,14 +718,14 @@ export default function KrrishPortfolio() {
                     ref={(el) => (socialRefs.current[i] = el)}
                     onMouseEnter={() => onSocialHover(i)}
                     onMouseLeave={() => onSocialLeave(i)}
-                    className="group flex items-center gap-4 px-5 py-4 rounded-2xl bg-[#f6f8fa]/90 backdrop-blur-md border-2 border-[#d0d7de] hover:border-[#2da44e] transition-all transform hover:scale-105"
+                    className="group flex items-center gap-4 px-5 py-4 bg-white border border-slate-900 shadow-[2px_2px_0_#0f172a] hover:bg-slate-50 transition-all transform hover:scale-105"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-green-700 flex items-center justify-center group-hover:rotate-12 transition-transform">
+                    <div className="w-10 h-10 bg-slate-900 flex items-center justify-center group-hover:rotate-12 transition-transform">
                       <img src={`https://cdn.simpleicons.org/${s.slug}`} alt={s.name} className="w-6 h-6 object-contain brightness-0 invert" onError={(e) => { e.currentTarget.style.display = "none"; }} />
                     </div>
-                    <span className="text-sm font-bold text-slate-700 group-hover:text-emerald-700 transition-colors">{s.name}</span>
+                    <span className="text-sm font-bold text-slate-700 group-hover:text-indigo-600 transition-colors">{s.name}</span>
                   </a>
                 ))}
               </div>
@@ -731,10 +733,10 @@ export default function KrrishPortfolio() {
           </div>
         </section >
       </main >
-      <footer className="relative z-10 max-w-7xl mx-auto px-6 pb-8 pt-8 text-center space-y-4 border-t-2 border-[#d0d7de] bg-white/90 backdrop-blur-md rounded-t-3xl shadow-[0_-36px_75px_rgba(15,23,42,0.2),0_48px_110px_rgba(15,23,42,0.18)]">
+      <footer className="relative z-10 max-w-7xl mx-auto px-6 pb-8 pt-8 text-center space-y-4 border border-slate-900 bg-white shadow-[4px_4px_0_#0f172a] rounded-none">
         <div className="flex items-center justify-center gap-2">
           <span className="text-2xl">💻</span>
-          <p className="text-lg font-bold bg-gradient-to-r from-emerald-700 to-green-700 bg-clip-text text-transparent">
+          <p className="text-lg font-bold text-slate-900">
             Krish Mishra
           </p>
         </div>

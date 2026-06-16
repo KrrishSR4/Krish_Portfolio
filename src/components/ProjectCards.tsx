@@ -192,16 +192,16 @@ function Carousel({ images, autoDelay = 2600 }: { images: string[]; autoDelay?: 
 function ProjectCard({ project, delay }: { project: Project; delay: number }) {
   return (
     <article
-      className="relative group/card bg-white border-2 border-slate-950 rounded-none overflow-hidden transition-all duration-350 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-2 hover:shadow-[12px_12px_0_#0f172a] shadow-[7px_7px_0_#0f172a] opacity-0 [animation:fadeUp_0.65s_ease_forwards] flex flex-col h-full"
+      className="relative group/card bg-white border border-slate-900 rounded-none overflow-hidden transition-all duration-350 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-1.5 hover:shadow-[5px_5px_0_#0f172a] shadow-[3px_3px_0_#0f172a] opacity-0 [animation:fadeUp_0.65s_ease_forwards] flex flex-col h-full"
       style={{ animationDelay: `${delay}s` }}
     >
-      <div className="absolute inset-0 pointer-events-none z-0 bg-gradient-to-br from-lime-200/40 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-350" />
+      <div className="absolute inset-0 pointer-events-none z-0 bg-gradient-to-br from-indigo-50/50 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-350" />
       <Carousel images={project.images} />
 
       <div className="relative z-10 p-5 flex flex-col flex-1">
         <div className="flex items-start justify-between mb-2.5">
           {project.num && (
-            <span className="font-['JetBrains_Mono',monospace] text-[11px] text-slate-950 bg-lime-300 border-2 border-slate-950 px-2 py-0.5 rounded-none">#{project.num}</span>
+            <span className="font-['JetBrains_Mono',monospace] text-[11px] text-slate-950 bg-slate-100 border border-slate-900 px-2 py-0.5 rounded-none">#{project.num}</span>
           )}
           <span className="flex items-center gap-1.5 font-['JetBrains_Mono',monospace] text-[10px] text-[#1f883d]">
             <span className="relative flex w-1.5 h-1.5">
@@ -219,7 +219,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="font-['JetBrains_Mono',monospace] text-[11px] px-2.5 py-0.5 rounded-none bg-[#f6f2e8] border border-slate-950 text-slate-700 cursor-default transition-all duration-200 hover:text-slate-950 hover:bg-lime-200"
+              className="font-['JetBrains_Mono',monospace] text-[11px] px-2.5 py-0.5 rounded-none bg-slate-50 border border-slate-900 text-slate-700 cursor-default transition-all duration-200 hover:text-slate-950 hover:bg-slate-100"
             >
               {tag}
             </span>
@@ -231,7 +231,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-1.5 font-['JetBrains_Mono',monospace] text-[12px] font-bold px-3 py-2 rounded-none bg-lime-300 text-slate-950 border-2 border-slate-950 transition-all duration-250 hover:-translate-y-px hover:shadow-[4px_4px_0_#0f172a]"
+            className="flex-1 flex items-center justify-center gap-1.5 font-['JetBrains_Mono',monospace] text-[12px] font-bold px-3 py-2 rounded-none bg-slate-900 text-white border border-slate-900 transition-all duration-250 hover:-translate-y-px hover:shadow-[3px_3px_0_#0f172a]"
           >
             <ExternalIcon size={12} />
             Live Demo
@@ -240,7 +240,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-1.5 font-['JetBrains_Mono',monospace] text-[12px] font-bold px-3 py-2 rounded-none bg-white text-slate-950 border-2 border-slate-950 transition-all duration-250 hover:bg-emerald-100 hover:-translate-y-px hover:shadow-[4px_4px_0_#0f172a]"
+            className="flex-1 flex items-center justify-center gap-1.5 font-['JetBrains_Mono',monospace] text-[12px] font-bold px-3 py-2 rounded-none bg-white text-slate-950 border border-slate-900 transition-all duration-250 hover:bg-slate-50 hover:-translate-y-px hover:shadow-[3px_3px_0_#0f172a]"
           >
             <GithubIcon size={12} />
             GitHub
@@ -255,7 +255,7 @@ export default function ProjectCards() {
   return (
     <section
       id="projects"
-      className="relative bg-white text-slate-950 px-5 sm:px-8 pt-10 pb-20 overflow-x-hidden rounded-none border-2 border-slate-950 font-['Syne',sans-serif] shadow-[12px_12px_0_#0f172a]"
+      className="relative bg-white text-slate-950 px-5 sm:px-8 pt-10 pb-20 overflow-x-hidden rounded-none border border-slate-900 font-['Syne',sans-serif] shadow-[4px_4px_0_#0f172a]"
     >
       <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(90deg,rgba(15,23,42,0.045)_1px,transparent_1px),linear-gradient(0deg,rgba(15,23,42,0.045)_1px,transparent_1px)] bg-[size:32px_32px]" />
 
