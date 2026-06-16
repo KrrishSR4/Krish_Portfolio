@@ -477,10 +477,10 @@ export default function KrrishPortfolio() {
               </span>
             </h1>
 
-            <div className="text-xl md:text-2xl font-semibold leading-relaxed min-h-[2.5rem] flex items-center">
-              <div className="flex items-center gap-2">
+            <div className="text-base md:text-lg font-semibold leading-none min-h-[2.5rem] flex items-center max-w-full">
+              <div className="flex items-center gap-2 max-w-full min-w-0">
                 <span className="inline-block w-3 h-3 bg-lime-300 border-2 border-slate-950 animate-pulse"></span>
-                <span className="font-['JetBrains_Mono',monospace] text-slate-950 bg-lime-200 px-2 border border-slate-950">{typedText}</span>
+                <span className="min-w-0 max-w-full whitespace-nowrap overflow-hidden text-ellipsis font-['JetBrains_Mono',monospace] text-slate-950 bg-white px-2 py-1 border border-slate-950">{typedText}</span>
                 <span className="inline-block w-1 h-7 bg-slate-950 animate-pulse ml-1"></span>
               </div>
             </div>
