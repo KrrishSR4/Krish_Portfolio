@@ -407,18 +407,25 @@ export default function KrrishPortfolio() {
     );
   };
 
+  const navButtonClass = (id: string) =>
+    `text-[11px] md:text-xs uppercase tracking-[0.18em] px-3 md:px-4 py-2 rounded-none border-2 border-slate-950 transition-all shadow-[3px_3px_0_#0f172a] hover:-translate-y-0.5 hover:shadow-[5px_5px_0_#0f172a] ${
+      active === id
+        ? "bg-lime-300 text-slate-950"
+        : "bg-white text-slate-950 hover:bg-emerald-100"
+    }`;
+
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-slate-50 via-emerald-50/30 to-green-50/40 text-slate-900 antialiased overflow-hidden font-['Syne',sans-serif]">
+    <div className="relative min-h-screen bg-[#f6f2e8] text-slate-950 antialiased overflow-hidden font-['Syne',sans-serif]">
       {/* Scroll Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-1.5 bg-white/30 backdrop-blur-sm z-50">
         <div
-          className="h-full bg-gradient-to-r from-emerald-600 via-green-500 to-lime-500 transition-all duration-150"
+          className="h-full bg-lime-300 transition-all duration-150"
           style={{ width: `${scrollProgress}% ` }}
         />
       </div>
 
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/60 via-white/50 to-green-100/70 opacity-90 animate-gradient" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,23,42,0.045)_1px,transparent_1px),linear-gradient(0deg,rgba(15,23,42,0.045)_1px,transparent_1px)] bg-[size:44px_44px]" />
         <div className="absolute inset-0 opacity-50 [mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.4)_25%,rgba(0,0,0,0.7)_50%,black_75%,black_100%)]">
           <DotGrid
             dotSize={isAndroidDevice() ? 4 : 6}
@@ -433,23 +440,23 @@ export default function KrrishPortfolio() {
             style={getAndroidPerformanceSettings()}
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/20 via-white/30 to-green-50/25" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(190,242,100,0.34),transparent_32%),radial-gradient(circle_at_86%_8%,rgba(45,212,191,0.22),transparent_30%),linear-gradient(135deg,rgba(246,242,232,0.92),rgba(255,255,255,0.72))]" />
       </div>
 
       <header className="sticky top-4 z-40 mx-auto max-w-7xl px-6">
-        <div className="backdrop-blur-md bg-white/3 border-2 border-[#1f7a1a] rounded-2xl p-3 md:p-4 flex items-center justify-between shadow-md">
-          <div className="text-lg md:text-xl font-extrabold uppercase tracking-wider text-[#24292f]">KRISH MISHRA</div>
+        <div className="bg-white/90 border-2 border-slate-950 rounded-none p-3 md:p-4 flex items-center justify-between shadow-[8px_8px_0_#0f172a]">
+          <div className="text-lg md:text-xl font-black uppercase tracking-[0.22em] text-slate-950">KRISH MISHRA</div>
           <nav className="flex items-center gap-2 md:gap-4">
-            <button onClick={() => scrollTo("about")} className={`text-xs md:text-sm uppercase tracking-wide px-2 md:px-3 py-2 rounded-lg border transition-all ${active === "about" ? "bg-[#2da44e] border-[#2da44e] text-white" : "bg-[#f6f8fa] border-[#d0d7de] text-[#24292f] hover:bg-[#eef2f6] hover:border-[#8c959f]"}`}>
+            <button onClick={() => scrollTo("about")} className={navButtonClass("about")}>
               About
             </button>
-            <button onClick={() => scrollTo("skills")} className={`text-xs md:text-sm uppercase tracking-wide px-2 md:px-3 py-2 rounded-lg border transition-all ${active === "skills" ? "bg-[#2da44e] border-[#2da44e] text-white" : "bg-[#f6f8fa] border-[#d0d7de] text-[#24292f] hover:bg-[#eef2f6] hover:border-[#8c959f]"}`}>
+            <button onClick={() => scrollTo("skills")} className={navButtonClass("skills")}>
               Skills
             </button>
-            <button onClick={() => scrollTo("projects")} className={`text-xs md:text-sm uppercase tracking-wide px-2 md:px-3 py-2 rounded-lg border transition-all ${active === "projects" ? "bg-[#2da44e] border-[#2da44e] text-white" : "bg-[#f6f8fa] border-[#d0d7de] text-[#24292f] hover:bg-[#eef2f6] hover:border-[#8c959f]"}`}>
+            <button onClick={() => scrollTo("projects")} className={navButtonClass("projects")}>
               Projects
             </button>
-            <button onClick={() => scrollTo("connect")} className={`text-xs md:text-sm uppercase tracking-wide px-2 md:px-3 py-2 rounded-lg border transition-all ${active === "connect" ? "bg-[#2da44e] border-[#2da44e] text-white" : "bg-[#f6f8fa] border-[#d0d7de] text-[#24292f] hover:bg-[#eef2f6] hover:border-[#8c959f]"}`}>
+            <button onClick={() => scrollTo("connect")} className={navButtonClass("connect")}>
               Contact
             </button>
           </nav>
@@ -460,21 +467,21 @@ export default function KrrishPortfolio() {
         {/* ABOUT */}
         <section id="about" className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start py-16">
           {/* LEFT: Main heading and typing effect */}
-          <div className="order-2 md:order-1 space-y-8 bg-white/3 backdrop-blur-sm rounded-3xl p-8 border border-white/10 shadow-lg">
-            <h1 className="text-4xl md:text-6xl font-extrabold uppercase tracking-wider text-left leading-tight">
-              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 via-green-600 to-lime-600">
+          <div className="order-2 md:order-1 space-y-8 bg-white/88 rounded-none p-6 md:p-8 border-2 border-slate-950 shadow-[12px_12px_0_#0f172a]">
+            <h1 className="text-5xl md:text-7xl font-black uppercase tracking-normal text-left leading-[0.9]">
+              <span className="block text-slate-950">
                 HEY I'M
               </span>
-              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 via-green-600 to-lime-600">
+              <span className="block text-emerald-700">
                 KRISH MISHRA
               </span>
             </h1>
 
             <div className="text-xl md:text-2xl font-semibold leading-relaxed min-h-[2.5rem] flex items-center">
               <div className="flex items-center gap-2">
-                <span className="inline-block w-2 h-2 bg-emerald-600 rounded-full animate-pulse"></span>
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 via-green-600 to-lime-600">{typedText}</span>
-                <span className="inline-block w-0.5 h-6 bg-gradient-to-b from-emerald-700 to-green-500 animate-pulse ml-1"></span>
+                <span className="inline-block w-3 h-3 bg-lime-300 border-2 border-slate-950 animate-pulse"></span>
+                <span className="font-['JetBrains_Mono',monospace] text-slate-950">{typedText}</span>
+                <span className="inline-block w-1 h-7 bg-slate-950 animate-pulse ml-1"></span>
               </div>
             </div>
 
@@ -499,8 +506,8 @@ export default function KrrishPortfolio() {
               </span>
             </div>
 
-            <div className="space-y-4 bg-white/40 backdrop-blur-sm rounded-2xl p-6 border border-white/50">
-              <h3 className="text-lg font-bold bg-gradient-to-r from-slate-700 to-slate-900 bg-clip-text text-transparent">
+            <div className="space-y-4 bg-[#f7fee7] rounded-none p-6 border-2 border-slate-950 shadow-[6px_6px_0_#0f172a]">
+              <h3 className="text-lg font-black uppercase tracking-[0.16em] text-slate-950">
                 What I Do
               </h3>
               <p className="text-sm text-slate-700 leading-relaxed">
@@ -519,9 +526,9 @@ export default function KrrishPortfolio() {
 
           {/* RIGHT: Hero card with image */}
           <div className="order-1 md:order-2 flex justify-end">
-            <div ref={heroRef} className={`relative w-full max-w-xl md:max-w-2xl h-80 md:h-[32rem] rounded-3xl bg-white/60 backdrop-blur-md border-4 border-[#1f7a1a] shadow-2xl transform-gpu overflow-hidden ${isAndroidDevice() ? 'will-change-transform' : ''}`} style={getAndroidPerformanceSettings()}>
+            <div ref={heroRef} className={`relative w-full max-w-xl md:max-w-2xl h-80 md:h-[32rem] rounded-none bg-white border-[5px] border-slate-950 shadow-[16px_16px_0_#0f172a] transform-gpu overflow-hidden ${isAndroidDevice() ? 'will-change-transform' : ''}`} style={getAndroidPerformanceSettings()}>
               <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10">
-                <div className="text-2xl md:text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-green-600">
+                <div className="text-xl md:text-2xl font-black uppercase tracking-[0.16em] bg-lime-300 border-2 border-slate-950 px-4 py-2 text-slate-950 shadow-[5px_5px_0_#0f172a]">
                   UI / UX & Web Dev
                 </div>
               </div>
@@ -539,14 +546,14 @@ export default function KrrishPortfolio() {
               <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-4 z-10">
                 <a
                   href="#connect"
-                  className="group/btn px-6 py-3 rounded-xl bg-gradient-to-r from-[#f6f8fa] to-[#eef2f6] backdrop-blur-md border-2 border-[#8c959f] font-medium text-[#24292f] hover:scale-105 hover:shadow-xl transition-all duration-300 hover:from-[#eef2f6] hover:to-[#e6edf3] hover:border-[#6f7480] cursor-pointer"
+                  className="group/btn px-6 py-3 rounded-none bg-white border-2 border-slate-950 font-black uppercase tracking-[0.12em] text-slate-950 shadow-[5px_5px_0_#0f172a] hover:-translate-y-1 hover:shadow-[8px_8px_0_#0f172a] transition-all duration-300 cursor-pointer"
                 >
                   <span className="group-hover/btn:tracking-wider transition-all duration-300">Let's Talk</span>
                 </a>
                 <a
                   href="/resume.pdf"
                   download
-                  className="group/btn px-6 py-3 rounded-xl bg-gradient-to-r from-[#f0fdf4] to-[#dcfce7] backdrop-blur-md border-2 border-[#1f883d] font-medium text-[#1f883d] hover:scale-105 hover:shadow-xl transition-all duration-300 hover:from-[#dcfce7] hover:to-[#bbf7d0] hover:border-[#2da44e] cursor-pointer"
+                  className="group/btn px-6 py-3 rounded-none bg-lime-300 border-2 border-slate-950 font-black uppercase tracking-[0.12em] text-slate-950 shadow-[5px_5px_0_#0f172a] hover:-translate-y-1 hover:shadow-[8px_8px_0_#0f172a] transition-all duration-300 cursor-pointer"
                 >
                   <span className="group-hover/btn:tracking-wider transition-all duration-300">Resume</span>
                 </a>
@@ -558,36 +565,36 @@ export default function KrrishPortfolio() {
         {/* STATS & ACHIEVEMENTS */}
         <section className="py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="group bg-gradient-to-br from-emerald-300/35 to-green-300/35 backdrop-blur-sm rounded-2xl p-6 border-2 border-emerald-400/50 hover:scale-105 transition-all transform hover:border-emerald-500">
-              <div className="text-4xl font-extrabold bg-gradient-to-r from-emerald-700 to-green-700 bg-clip-text text-transparent">
+            <div className="group bg-white rounded-none p-6 border-2 border-slate-950 shadow-[7px_7px_0_#0f172a] hover:-translate-y-1 transition-all transform">
+              <div className="text-5xl font-black text-emerald-700">
                 15+
               </div>
-              <div className="text-sm font-bold text-slate-700 mt-2">Projects Completed</div>
-              <div className="text-xs text-slate-600 mt-1">Web & Mobile Apps</div>
+              <div className="text-sm font-black uppercase tracking-[0.12em] text-slate-950 mt-2">Projects Completed</div>
+              <div className="text-xs text-slate-600 mt-1 font-['JetBrains_Mono',monospace]">Web & Mobile Apps</div>
             </div>
 
-            <div className="group bg-gradient-to-br from-slate-300/35 to-emerald-200/35 backdrop-blur-sm rounded-2xl p-6 border-2 border-slate-400/45 hover:scale-105 transition-all transform hover:border-emerald-500">
-              <div className="text-4xl font-extrabold bg-gradient-to-r from-slate-700 to-emerald-700 bg-clip-text text-transparent">
+            <div className="group bg-lime-100 rounded-none p-6 border-2 border-slate-950 shadow-[7px_7px_0_#0f172a] hover:-translate-y-1 transition-all transform">
+              <div className="text-5xl font-black text-slate-950">
                 3+
               </div>
-              <div className="text-sm font-bold text-slate-700 mt-2">Years Experience</div>
-              <div className="text-xs text-slate-600 mt-1">Learning & Building</div>
+              <div className="text-sm font-black uppercase tracking-[0.12em] text-slate-950 mt-2">Years Experience</div>
+              <div className="text-xs text-slate-600 mt-1 font-['JetBrains_Mono',monospace]">Learning & Building</div>
             </div>
 
-            <div className="group bg-gradient-to-br from-green-200/35 to-lime-200/35 backdrop-blur-sm rounded-2xl p-6 border-2 border-green-300/45 hover:scale-105 transition-all transform hover:border-green-500">
-              <div className="text-4xl font-extrabold bg-gradient-to-r from-green-700 to-lime-700 bg-clip-text text-transparent">
+            <div className="group bg-emerald-100 rounded-none p-6 border-2 border-slate-950 shadow-[7px_7px_0_#0f172a] hover:-translate-y-1 transition-all transform">
+              <div className="text-5xl font-black text-emerald-700">
                 10+
               </div>
-              <div className="text-sm font-bold text-slate-700 mt-2">Tech Stack</div>
-              <div className="text-xs text-slate-600 mt-1">Modern Technologies</div>
+              <div className="text-sm font-black uppercase tracking-[0.12em] text-slate-950 mt-2">Tech Stack</div>
+              <div className="text-xs text-slate-600 mt-1 font-['JetBrains_Mono',monospace]">Modern Technologies</div>
             </div>
 
-            <div className="group bg-gradient-to-br from-slate-300/35 to-green-200/35 backdrop-blur-sm rounded-2xl p-6 border-2 border-slate-400/45 hover:scale-105 transition-all transform hover:border-green-500">
-              <div className="text-4xl font-extrabold bg-gradient-to-r from-slate-700 to-green-700 bg-clip-text text-transparent">
+            <div className="group bg-white rounded-none p-6 border-2 border-slate-950 shadow-[7px_7px_0_#0f172a] hover:-translate-y-1 transition-all transform">
+              <div className="text-5xl font-black text-slate-950">
                 100%
               </div>
-              <div className="text-sm font-bold text-slate-700 mt-2">Project Quality</div>
-              <div className="text-xs text-slate-600 mt-1">Quality Focused</div>
+              <div className="text-sm font-black uppercase tracking-[0.12em] text-slate-950 mt-2">Project Quality</div>
+              <div className="text-xs text-slate-600 mt-1 font-['JetBrains_Mono',monospace]">Quality Focused</div>
             </div>
           </div>
         </section>
@@ -596,22 +603,22 @@ export default function KrrishPortfolio() {
         {/* SKILLS - larger */}
         <section id="skills" ref={pinRef} className="py-16">
           <div className="mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-emerald-700 via-green-700 to-lime-700 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-6xl font-black uppercase leading-none mb-3 text-slate-950">
               Skills & Technologies
             </h2>
-            <p className="text-slate-600 text-lg">
+            <p className="text-slate-700 text-lg font-['JetBrains_Mono',monospace]">
               Scroll horizontally to explore my <span className="font-bold text-emerald-700">tech stack</span>
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-100/85 via-green-100/75 to-lime-100/80 backdrop-blur-sm p-10 shadow-2xl border-2 border-[#04912a]/45">
+          <div className="overflow-hidden rounded-none bg-[#ecfccb] p-8 md:p-10 shadow-[12px_12px_0_#0f172a] border-2 border-slate-950">
             <div className="flex gap-8 items-center will-change-transform py-6" ref={skillsRef}>
               {skills.map((s) => {
                 const palette = skillShadowPalette[s.slug] ?? { base: "rgba(100, 116, 139, 0.25)", hover: "rgba(71, 85, 105, 0.45)" };
                 return (
                   <div
                     key={s.slug}
-                    className="skill-card flex-shrink-0 w-64 h-32 p-5 rounded-2xl border-2 border-[#04912a]/35 bg-white/3 backdrop-blur-md transition duration-150 transform-gpu hover:scale-105 flex items-center gap-5 group"
+                    className="skill-card flex-shrink-0 w-64 h-32 p-5 rounded-none border-2 border-slate-950 bg-white transition duration-150 transform-gpu hover:scale-105 flex items-center gap-5 group shadow-[6px_6px_0_#0f172a]"
                     data-shadow-base={palette.base}
                     data-shadow-hover={palette.hover}
                     style={{ boxShadow: "none" }}
