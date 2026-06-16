@@ -201,7 +201,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
       <div className="relative z-10 p-5 flex flex-col flex-1">
         <div className="flex items-start justify-between mb-2.5">
           {project.num && (
-            <span className="font-['JetBrains_Mono',monospace] text-[11px] text-violet-900 bg-violet-100 border border-violet-900 px-2 py-0.5 rounded-none shadow-[2px_2px_0_#0f172a]">#{project.num}</span>
+            <span className="font-['JetBrains_Mono',monospace] text-[11px] text-[#1f883d] bg-emerald-50 border border-emerald-900 px-2 py-0.5 rounded-none shadow-[2px_2px_0_#0f172a]">#{project.num}</span>
           )}
           <span className="flex items-center gap-1.5 font-['JetBrains_Mono',monospace] text-[10px] text-[#1f883d]">
             <span className="relative flex w-1.5 h-1.5">
@@ -219,7 +219,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="font-['JetBrains_Mono',monospace] text-[11px] px-2.5 py-0.5 rounded-none bg-slate-50 border border-slate-900 text-slate-700 cursor-default transition-all duration-200 hover:text-violet-950 hover:bg-violet-100 hover:border-violet-900"
+              className="font-['JetBrains_Mono',monospace] text-[11px] px-2.5 py-0.5 rounded-none bg-slate-50 border border-slate-900 text-slate-700 cursor-default transition-all duration-200 hover:text-emerald-900 hover:bg-emerald-50 hover:border-emerald-700"
             >
               {tag}
             </span>
@@ -231,7 +231,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-1.5 font-['JetBrains_Mono',monospace] text-[12px] font-bold px-3 py-2 rounded-none bg-emerald-500 text-white border border-slate-900 transition-all duration-250 hover:-translate-y-px hover:shadow-[3px_3px_0_#0f172a] hover:bg-emerald-600"
+            className="flex-1 flex items-center justify-center gap-1.5 font-['JetBrains_Mono',monospace] text-[12px] font-bold px-3 py-2 rounded-none bg-[#2ea043] text-white border border-slate-900 transition-all duration-250 hover:-translate-y-px hover:shadow-[3px_3px_0_#0f172a] hover:bg-[#238636]"
           >
             <ExternalIcon size={12} />
             Live Demo
@@ -240,7 +240,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-1.5 font-['JetBrains_Mono',monospace] text-[12px] font-bold px-3 py-2 rounded-none bg-violet-500 text-white border border-slate-900 transition-all duration-250 hover:-translate-y-px hover:shadow-[3px_3px_0_#0f172a] hover:bg-violet-600"
+            className="flex-1 flex items-center justify-center gap-1.5 font-['JetBrains_Mono',monospace] text-[12px] font-bold px-3 py-2 rounded-none bg-white text-slate-900 border border-slate-900 transition-all duration-250 hover:-translate-y-px hover:shadow-[3px_3px_0_#0f172a] hover:bg-emerald-50 hover:text-[#1f883d]"
           >
             <GithubIcon size={12} />
             GitHub
