@@ -468,11 +468,11 @@ export default function KrrishPortfolio() {
         <section id="about" className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start py-16">
           {/* LEFT: Main heading and typing effect */}
           <div className="order-2 md:order-1 space-y-8 bg-white/88 rounded-none p-6 md:p-8 border-2 border-slate-950 shadow-[12px_12px_0_#0f172a]">
-            <h1 className="text-left uppercase leading-[0.86]">
+            <h1 className="text-left uppercase leading-[0.9] max-w-full">
               <span className="block font-['JetBrains_Mono',monospace] text-xl md:text-2xl font-bold tracking-[0.26em] text-slate-700 mb-3">
                 HEY I'M
               </span>
-              <span className="block max-w-full whitespace-nowrap font-black text-[clamp(2.35rem,5.9vw,5.4rem)] tracking-[-0.04em] text-slate-950">
+              <span className="block max-w-full whitespace-nowrap font-black text-[clamp(2.25rem,3.85vw,4.15rem)] tracking-[-0.075em] text-slate-950 [font-stretch:condensed]">
                 KRISH MISHRA
               </span>
             </h1>
