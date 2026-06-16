@@ -133,6 +133,53 @@ All colors MUST be HSL.
   }
 }
 
+@layer components {
+  #connect {
+    border: 2px solid #0f172a;
+    border-radius: 0;
+    background:
+      linear-gradient(90deg, rgba(15, 23, 42, 0.055) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(15, 23, 42, 0.055) 1px, transparent 1px),
+      #ffffff;
+    background-size: 34px 34px;
+    box-shadow: 12px 12px 0 #0f172a;
+  }
+
+  #connect h2,
+  #connect h3,
+  footer h2,
+  footer h3 {
+    color: #0f172a !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+
+  #connect a,
+  #connect button {
+    border-radius: 0 !important;
+    border: 2px solid #0f172a !important;
+    box-shadow: 5px 5px 0 #0f172a;
+    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+  }
+
+  #connect a:hover,
+  #connect button:hover {
+    transform: translateY(-3px);
+    box-shadow: 8px 8px 0 #0f172a;
+  }
+
+  footer {
+    border-top: 2px solid #0f172a;
+    background: #f6f2e8;
+  }
+
+  footer a,
+  footer button {
+    border-radius: 0 !important;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;

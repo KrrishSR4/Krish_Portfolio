@@ -197,7 +197,7 @@ export default function KrrishPortfolio() {
       ease: "none",
       scrollTrigger: {
         trigger: pinEl,
-        start: "top top",
+        start: "top 132px",
         end: () => `+=${computeScrollDistance()}`,
         pin: true,
         scrub: 0.7,
@@ -401,7 +401,7 @@ export default function KrrishPortfolio() {
       new CustomEvent("lenis-scroll-to", {
         detail: {
           target: el,
-          options: { offset: -24 },
+          options: { offset: -132 },
         },
       })
     );
@@ -443,7 +443,7 @@ export default function KrrishPortfolio() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(190,242,100,0.34),transparent_32%),radial-gradient(circle_at_86%_8%,rgba(45,212,191,0.22),transparent_30%),linear-gradient(135deg,rgba(246,242,232,0.92),rgba(255,255,255,0.72))]" />
       </div>
 
-      <header className="sticky top-4 z-40 mx-auto max-w-7xl px-6">
+      <header className="fixed top-4 left-0 right-0 z-40 mx-auto max-w-7xl px-6">
         <div className="bg-white/90 border-2 border-slate-950 rounded-none p-3 md:p-4 flex items-center justify-between shadow-[8px_8px_0_#0f172a]">
           <div className="text-lg md:text-xl font-black uppercase tracking-[0.22em] text-slate-950">KRISH MISHRA</div>
           <nav className="flex items-center gap-2 md:gap-4">
@@ -463,16 +463,16 @@ export default function KrrishPortfolio() {
         </div>
       </header>
 
-      <main className="relative z-10 max-w-7xl mx-auto px-6 pb-20">
+      <main className="relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-20">
         {/* ABOUT */}
         <section id="about" className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start py-16">
           {/* LEFT: Main heading and typing effect */}
           <div className="order-2 md:order-1 space-y-8 bg-white/88 rounded-none p-6 md:p-8 border-2 border-slate-950 shadow-[12px_12px_0_#0f172a]">
-            <h1 className="text-5xl md:text-7xl font-black uppercase tracking-normal text-left leading-[0.9]">
-              <span className="block text-slate-950">
+            <h1 className="text-left uppercase leading-[0.86]">
+              <span className="block font-['JetBrains_Mono',monospace] text-xl md:text-2xl font-bold tracking-[0.26em] text-slate-700 mb-3">
                 HEY I'M
               </span>
-              <span className="block text-emerald-700">
+              <span className="block max-w-full whitespace-nowrap font-black text-[clamp(2.35rem,5.9vw,5.4rem)] tracking-[-0.04em] text-slate-950">
                 KRISH MISHRA
               </span>
             </h1>
@@ -480,16 +480,16 @@ export default function KrrishPortfolio() {
             <div className="text-xl md:text-2xl font-semibold leading-relaxed min-h-[2.5rem] flex items-center">
               <div className="flex items-center gap-2">
                 <span className="inline-block w-3 h-3 bg-lime-300 border-2 border-slate-950 animate-pulse"></span>
-                <span className="font-['JetBrains_Mono',monospace] text-slate-950">{typedText}</span>
+                <span className="font-['JetBrains_Mono',monospace] text-slate-950 bg-lime-200 px-2 border border-slate-950">{typedText}</span>
                 <span className="inline-block w-1 h-7 bg-slate-950 animate-pulse ml-1"></span>
               </div>
             </div>
 
             <div className="space-y-4">
               <p className="text-xl md:text-2xl font-bold text-slate-800">
-                <span className="bg-gradient-to-r from-emerald-700 to-green-600 bg-clip-text text-transparent">Fast.</span>{" "}
-                <span className="bg-gradient-to-r from-green-700 to-lime-600 bg-clip-text text-transparent">Vibrant.</span>{" "}
-                <span className="bg-gradient-to-r from-slate-700 to-emerald-700 bg-clip-text text-transparent">Interactive.</span>
+                <span className="bg-lime-200 px-1 border border-slate-950">Fast.</span>{" "}
+                <span className="bg-emerald-100 px-1 border border-slate-950">Vibrant.</span>{" "}
+                <span className="bg-white px-1 border border-slate-950">Interactive.</span>
               </p>
 
               <p className="text-lg text-slate-800 leading-relaxed">
@@ -601,7 +601,7 @@ export default function KrrishPortfolio() {
 
 
         {/* SKILLS - larger */}
-        <section id="skills" ref={pinRef} className="py-16">
+        <section id="skills" ref={pinRef} className="scroll-mt-40 pt-32 pb-16">
           <div className="mb-8">
             <h2 className="text-4xl md:text-6xl font-black uppercase leading-none mb-3 text-slate-950">
               Skills & Technologies

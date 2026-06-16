@@ -44,7 +44,7 @@ export default function SmoothScroll() {
       const { target, options } = (event as LenisScrollToEvent).detail;
       if (lenisRef.current) {
         lenisRef.current.scrollTo(target, {
-          offset: -24,
+          offset: -132,
           duration: 1.05,
           ...options,
         });
@@ -59,7 +59,7 @@ export default function SmoothScroll() {
             : target.getBoundingClientRect().top;
 
       window.scrollTo({
-        top: top + window.scrollY + (options?.offset ?? -24),
+        top: top + window.scrollY + (options?.offset ?? -132),
         behavior: "smooth",
       });
     };
