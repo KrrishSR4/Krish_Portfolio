@@ -397,7 +397,14 @@ export default function KrrishPortfolio() {
     const el = document.getElementById(id);
     if (!el) return;
     setActive(id);
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.dispatchEvent(
+      new CustomEvent("lenis-scroll-to", {
+        detail: {
+          target: el,
+          options: { offset: -24 },
+        },
+      })
+    );
   };
 
   return (

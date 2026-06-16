@@ -15,10 +15,14 @@ export const ScrollToTopButton = () => {
   };
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.dispatchEvent(
+      new CustomEvent("lenis-scroll-to", {
+        detail: {
+          target: 0,
+          options: { offset: 0 },
+        },
+      })
+    );
   };
 
   useEffect(() => {

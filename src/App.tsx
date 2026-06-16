@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import TargetCursor from "./components/TargetCursor";
+import SmoothScroll from "./components/SmoothScroll";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ const App = () => (
         hideDefaultCursor={true}
         parallaxOn={true}
       />
+      <SmoothScroll />
       <Toaster />
       <Sonner />
       <BrowserRouter>
